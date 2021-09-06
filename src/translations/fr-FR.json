@@ -1,0 +1,68 @@
+{
+  "bookmarks": {
+    "new": {
+      "start": {
+        "title": "Démarrage"
+      }
+    }
+  },
+  "project": {
+    "documentation": "Documentation",
+    "header": {
+      "actionGroups": {
+        "help": "Aide",
+        "edit": "Edition",
+        "file": "Fichier"
+      }
+    },
+    "drawer": {
+      "icons": {
+        "dashboards": "Dashboards (Alt+D)",
+        "content-editor": "Éditeur de contenu (Alt+C)",
+        "state-editor": "Éditeur d'état (Alt+S)",
+        "widgets": "Widgets (Alt+W)",
+        "filters": "Filtres (Alt+F)",
+        "style-editor": "Éditeur de style (Alt+Y)"
+      },
+      "widgetsDrawer": {
+        "savedWidgets": "Widgets sauvegardés",
+        "defaultWidgets": "Widgets par défaut"
+      }
+    },
+    "start": {
+      "pageLabel": "Page de démarrage",
+      "pageLink": "Page de démarrage",
+      "subTitle": "Interface utilisateur d'aide à la décision",
+      "startSectionTitle": "Démarrer",
+      "helpSectionTitle": "Aide",
+      "supportSectionTitle": "Support",
+      "startNewDashboard": "Créer un dashboard",
+      "supportInfo": "Contactez votre support ou ",
+      "supportReportIssue": "rapportez un problème.",
+      "startOpen": "Ouvrir un dashboard",
+      "whatIsIt": "Qu'est ce que ",
+      "helpWhatIsIt": "ActiveUI ",
+      "helpWhatsNew": "Quoi de neuf ?",
+      "helpUserGuide": "Guide Utilisateur",
+      "helpKeyboardShortcuts": "Raccourcis Clavier",
+      "helpMDXResources": "Documentation MDX"
+    },
+    "invalidUrl": {
+      "goToHomePage": "Aller à la page d'accueil",
+      "prefix": "Le bookmark n'a pas pu être ouvert.",
+      "suffix": "Veuillez vérifier l'adresse et réessayer.",
+      "reason": {
+        "unknownBookmark": "Soit le bookmark n'existe pas, soit vous n'avez pas les droits pour le lire.",
+        "wrongType": "Le bookmark doit être un dashboard ou un widget."
+      }
+    },
+    "display": {
+      "conflict": {
+        "title": "L'édition a été desactivée",
+        "description": "Vous n'avez pas le droit de modifier ce bookmark.",
+        "placeholderTitle": "Bookmark en lecture seule",
+        "placeholderSubTitle": "Passez en mode visualisation pour afficher ce bookmark."
+      }
+    }
+  }
+}

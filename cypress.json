@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "env": {
+    "SERVER_URL": "Add your test server url here.",
+    "USERNAME": "Add your app username here.",
+    "PASSWORD": "Add your app password here."
+  }
+}

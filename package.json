@@ -1,0 +1,110 @@
+{
+  "name": "your-application-name-goes-here",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": ".",
+  "scripts": {
+    "build": "react-scripts build",
+    "check-style": "prettier **/*.{css,html,tsx,json,md} --list-different",
+    "fix-style": "prettier **/*.{css,html,tsx,json,md} --write",
+    "serve": "superstatic build --port 3000",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "test-e2e": "cypress run",
+    "test-e2e-debug": "cypress open"
+  },
+  "browserslist": {
+    "production": [
+      "Chrome >= 33",
+      "Firefox >= 29",
+      "Edge >= 12",
+      "IE >= 11"
+    ],
+    "development": [
+      "Chrome >= 33",
+      "Firefox >= 29",
+      "Edge >= 12",
+      "IE >= 11"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "emotion"
+    ],
+    "extends": [
+      "react-app"
+    ],
+    "rules": {
+      "emotion/jsx-import": "error",
+      "emotion/no-vanilla": "error",
+      "emotion/syntax-preference": [
+        2,
+        "string"
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "cypress/**"
+        ],
+        "extends": [
+          "plugin:cypress/recommended"
+        ]
+      }
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^dnd-core$": "dnd-core/dist/cjs",
+      "^react-dnd$": "react-dnd/dist/cjs",
+      "^react-dnd-html5-backend$": "react-dnd-html5-backend/dist/cjs"
+    }
+  },
+  "resolutions": {
+    "moment": "2.24.0",
+    "terser-webpack-plugin": "1.4.3"
+  },
+  "dependencies": {
+    "@activeviam/activeui-sdk": "file:./activeui-sdk-4.3.16.tgz",
+    "@emotion/core": "^10.0.16",
+    "@reduxjs/toolkit": "^1.2.1",
+    "antd": "3.20.6",
+    "bowser": "^1.9.4",
+    "core-js": "^3.2.1",
+    "file-saver": "^1.3.3",
+    "jszip": "^3.1.3",
+    "lodash": "^4.17.18",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-split-pane": "^0.1.91",
+    "redux": "^4.0.5",
+    "regenerator-runtime": "^0.13.2",
+    "resize-observer-polyfill": "^1.5.1",
+    "use-persisted": "^0.1.2",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.1",
+    "@types/jest": "^24.0.13",
+    "@types/jszip": "^3.1.7",
+    "@types/lodash": "^4.14.138",
+    "@types/react": "^16.9.4",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-redux": "^7.1.7",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/webpack-env": "^1.13.9",
+    "cypress": "^3.8.3",
+    "eslint-plugin-emotion": "^10.0.14",
+    "prettier": "^2.0.4",
+    "superstatic": "^6.0.3",
+    "typescript": "^3.8.2"
+  }
+}
