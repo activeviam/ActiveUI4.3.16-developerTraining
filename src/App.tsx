@@ -31,6 +31,7 @@ const activeUI = createActiveUI({
     ]);
     return _.merge({}, coreTranslation, projectTranslation);
   },
+  // TODO:  in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
   defaultSettings: {
     'application.defaultDisplayMode': DisplayMode.VIEW,
     enforceViewModeOnReadonlyBookmark: true,
