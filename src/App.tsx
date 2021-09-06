@@ -41,6 +41,7 @@ const activeUI = createActiveUI({
     'bookmarks.favorites.content-editor.hidden': true,
     'bookmarks.favorites.style-editor.hidden': true,
     'bookmarks.favorites.state-editor.hidden': true,
+    showLegacyCharts: true,
     'bookmark-tree.handlers.contextmenu': [
       'rename-server',
       'delete-server',
