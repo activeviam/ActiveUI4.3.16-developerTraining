@@ -8,8 +8,8 @@ const Dashboards = () => (
       // TODO: enable "toggle-dock-title-bar" under actions and "add-server" under quickActions to enable the relevant quick action  menu
       name: '',
       value: {
-        actions: [],
-        quickActions: [],
+        actions: ["toggle-dock-title-bar"],
+        quickActions: ["add-server"],
         containerKey: 'bookmark-tree',
         showTitleBar: false,
         body: {restrictionType: 'dashboard'},
