@@ -33,6 +33,8 @@ export default function SubMenu(props: SubMenuProps) {
         <Icon type="logout" style={{marginRight: '8px'}} />
         {translator.format('bookmarks.dashboard.logout')}
       </Menu.Item>
+
+        // TODO: Ex-2 generate menu items by lopping through themes.listThemes()
     </Menu.SubMenu>
   );
 }
