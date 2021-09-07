@@ -51,7 +51,7 @@ export default function SubMenu(props: SubMenuProps) {
                     settings.set(themeSettingKey, valueClicked.key.slice(6))
                 }}
             >
-                caption is {config.caption}
+               {config.caption}
             </Menu.Item>
         ))}
 
