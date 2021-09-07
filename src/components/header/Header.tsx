@@ -60,6 +60,7 @@ const Header = ({title, height}: Props) => (
       padding: 0,
       display: 'flex',
       justifyContent: 'space-between',
+      backgroundColor: 'red',
     }}
   >
     <div
