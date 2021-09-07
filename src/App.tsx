@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import _ from 'lodash';
 
 import {StartCustomContainerPlugin} from './components/Start';
+import themePlugin from "./custom/plugins/Theme";
 import {store} from './state/store';
 import {startBookmark} from './configurations/startBookmark';
 import LoadingOrApp from './LoadingOrApp';
@@ -33,6 +34,9 @@ const activeUI = createActiveUI({
   },
   // TODO:  Ex1 - in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
   defaultSettings: {
+    'global.theme':{
+      key:'erste'
+    },
     'application.defaultDisplayMode': DisplayMode.VIEW,
     enforceViewModeOnReadonlyBookmark: true,
     'application.home.fallback': startBookmark('Start page'),
@@ -70,6 +74,7 @@ const activeUI = createActiveUI({
   plugins: {
     container: [StartCustomContainerPlugin],
     action: [OpenContentEditorPlugin],
+    theme: [themePlugin],
   },
 });
 

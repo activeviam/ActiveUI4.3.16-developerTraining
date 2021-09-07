@@ -6,7 +6,7 @@
  *******************************************************************************/
 
 const themePlugin = {
-  key: "custom",
+  key: "erste",
   // returns an object of type ThemeImplementationProperties
   createProperties(parameters: any, activeUI: any) {
     // 2.1 TODO: Ex-2 Define your own theme.
@@ -15,7 +15,7 @@ const themePlugin = {
     return {
       isDark: false,
       palette: {
-        primaryColor: "#FF00FF",
+        primaryColor: "#ff0000",
         errorColor: "#F06292",
         successColor: "#CDDC39",
         warningColor: "#FF9800",
