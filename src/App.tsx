@@ -33,6 +33,7 @@ const activeUI = createActiveUI({
   },
   // TODO:  Ex1 - in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
   defaultSettings: {
+    // TODO: Ex2 - make your custom theme the default global theme
     'application.defaultDisplayMode': DisplayMode.VIEW,
     enforceViewModeOnReadonlyBookmark: true,
     'application.home.fallback': startBookmark('Start page'),
