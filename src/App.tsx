@@ -32,7 +32,8 @@ const activeUI = createActiveUI({
     ]);
     //TODO: Ex2 - add translation to your custom theme
 
-    return _.merge({}, coreTranslation, projectTranslation);
+    let translations =  _.merge({}, coreTranslation, projectTranslation);
+    translations.theme[themePlugin.key] = "ActiveViam";
   },
   // TODO:  Ex1 - in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
   defaultSettings: {
