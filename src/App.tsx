@@ -29,6 +29,8 @@ const activeUI = createActiveUI({
       import(`@activeviam/activeui-sdk/locales/${locale}.json`),
       import(`./translations/${locale}.json`),
     ]);
+    //TODO: Ex2 - add translation to your custom theme
+
     return _.merge({}, coreTranslation, projectTranslation);
   },
   // TODO:  Ex1 - in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
