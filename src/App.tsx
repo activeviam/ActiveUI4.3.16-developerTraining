@@ -34,6 +34,7 @@ const activeUI = createActiveUI({
   },
   // TODO:  Ex1 - in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
   defaultSettings: {
+    // TODO: Ex2 - make your custom theme the default global theme
     'global.theme':{
       key:'erste'
     },
@@ -71,6 +72,8 @@ const activeUI = createActiveUI({
     'placeholder.handlers.click': ['open-content-editor'],
     'userFilters.enabled': true,
   },
+
+  //TODO: Ex2 - register your custom theme plugin here
   plugins: {
     container: [StartCustomContainerPlugin],
     action: [OpenContentEditorPlugin],
