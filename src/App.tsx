@@ -67,6 +67,8 @@ const activeUI = createActiveUI({
     'placeholder.handlers.click': ['open-content-editor'],
     'userFilters.enabled': true,
   },
+
+  //TODO: Ex2 - register your custom theme plugin here
   plugins: {
     container: [StartCustomContainerPlugin],
     action: [OpenContentEditorPlugin],
