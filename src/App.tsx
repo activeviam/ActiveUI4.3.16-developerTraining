@@ -30,18 +30,9 @@ const activeUI = createActiveUI({
       import(`@activeviam/activeui-sdk/locales/${locale}.json`),
       import(`./translations/${locale}.json`),
     ]);
-    //TODO: Ex2 - add translation to your custom theme
-
-    let translations =  _.merge({}, coreTranslation, projectTranslation);
-    translations.theme[themePlugin.key] = "ActiveViam";
-    return translations;
+    return _.merge({}, coreTranslation, projectTranslation);
   },
-  // TODO:  Ex1 - in default settings, enable the visualisation of legacy maps and charts by setting 'showLegacyCharts' to true
   defaultSettings: {
-    // TODO: Ex2 - make your custom theme the default global theme
-    'global.theme':{
-      key:'erste'
-    },
     'application.defaultDisplayMode': DisplayMode.VIEW,
     enforceViewModeOnReadonlyBookmark: true,
     'application.home.fallback': startBookmark('Start page'),
@@ -51,7 +42,6 @@ const activeUI = createActiveUI({
     'bookmarks.favorites.content-editor.hidden': true,
     'bookmarks.favorites.style-editor.hidden': true,
     'bookmarks.favorites.state-editor.hidden': true,
-    showLegacyCharts: true,
     'bookmark-tree.handlers.contextmenu': [
       'rename-server',
       'delete-server',
@@ -76,12 +66,9 @@ const activeUI = createActiveUI({
     'placeholder.handlers.click': ['open-content-editor'],
     'userFilters.enabled': true,
   },
-
-  //TODO: Ex2 - register your custom theme plugin here
   plugins: {
     container: [StartCustomContainerPlugin],
     action: [OpenContentEditorPlugin],
-    theme: [themePlugin],
   },
 });
 
