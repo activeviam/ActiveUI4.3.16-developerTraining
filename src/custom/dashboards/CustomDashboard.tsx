@@ -5,11 +5,43 @@
  * reproduction or transfer of this material is strictly prohibited
  *******************************************************************************/
 import React from "react";
+import {Container, ContainerFullValue} from "@activeviam/activeui-sdk";
+import { enhancedPivotTable } from "../../widgets/initialWidgets/enhancedPivotTable";
+
+
 
 // =================================================================
 //  Embed dashboard into container for rendering
 // =================================================================
-// 4.1.1 TODO: create a simple component that renders "Hello world"
+//    TODO: create a simple component that renders "Hello world"
+//    TODO: Ex4.3 -
+//           - create 2 <div> with width 50%, height 100%
+//           - put myPivotTable contaienr in the first div
+//           - add container with childKey myChart, and defaultValue MyChartValue
+//
+
+const myPivotMdx = `SELECT 
+                    NON EMPTY Hierarchize(Hierarchize(DrilldownLevel([CounterParty].[CounterParty].[ALL].[AllMember]))) ON ROWS, 
+                    NON EMPTY Crossjoin([Measures].[pnl.SUM], [Currency].[Currency].[Currency].Members) ON COLUMNS 
+                    FROM [EquityDerivativesCube] 
+                    CELL PROPERTIES VALUE, FORMATTED_VALUE, BACK_COLOR, FORE_COLOR, FONT_FLAGS`;
+
+const MyPivotValue: ContainerFullValue = {
+    name: "Pivot Table",
+    type: "container",
+    value: {
+        style: {},
+        showTitleBar: true,
+        containerKey: "pivot-table",
+        body: {
+            mdx: myPivotMdx,
+            // NOTE: Commenting out the line below will make the pivot table use all default settings instead of our custom ones.
+            configuration: enhancedPivotTable,
+        },
+    },
+    writable: false,
+};
+
 function MyDashboardComponent() {
     return (
         <div
@@ -20,7 +52,9 @@ function MyDashboardComponent() {
                 flexDirection: "row",
             }}
         >
-            Hello World
+            <div style={{ width: "50%", height: "100%" }}>
+                <Container childKey="myPivotTable" defaultValue={MyPivotValue} />
+            </div>
         </div>
     );
 }
