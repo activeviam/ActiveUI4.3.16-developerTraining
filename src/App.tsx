@@ -30,6 +30,8 @@ const activeUI = createActiveUI({
       import(`@activeviam/activeui-sdk/locales/${locale}.json`),
       import(`./translations/${locale}.json`),
     ]);
+
+    //TODO:  Ex4 - Add custom translation for the container of the custom dashboard
     return _.merge({}, coreTranslation, projectTranslation);
   },
   defaultSettings: {
@@ -67,6 +69,7 @@ const activeUI = createActiveUI({
     'userFilters.enabled': true,
   },
   plugins: {
+    // TODO: Ex4 - add your custom container to the project
     container: [StartCustomContainerPlugin],
     action: [OpenContentEditorPlugin],
   },
