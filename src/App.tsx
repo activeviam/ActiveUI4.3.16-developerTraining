@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import _ from 'lodash';
 
 import {StartCustomContainerPlugin} from './components/Start';
-import themePlugin from "./custom/plugins/Theme";
+import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
 import {store} from './state/store';
 import {startBookmark} from './configurations/startBookmark';
 import LoadingOrApp from './LoadingOrApp';
@@ -70,7 +70,7 @@ const activeUI = createActiveUI({
   },
   plugins: {
     // TODO: Ex4 - add your custom container to the project
-    container: [StartCustomContainerPlugin],
+    container: [StartCustomContainerPlugin, MyCustomDashboardPlugin],
     action: [OpenContentEditorPlugin],
   },
 });
