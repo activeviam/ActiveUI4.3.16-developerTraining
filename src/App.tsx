@@ -28,11 +28,16 @@ const activeUI = createActiveUI({
   fetchTranslation: async (locale: string) => {
     const [coreTranslation, projectTranslation] = await Promise.all([
       import(`@activeviam/activeui-sdk/locales/${locale}.json`),
-      import(`./translations/${locale}.json`),
+      import(`./translations/${locale}.json`)
     ]);
 
     //TODO:  Ex4 - Add custom translation for the container of the custom dashboard
-    return _.merge({}, coreTranslation, projectTranslation);
+    return _.merge({}, coreTranslation, projectTranslation, {
+      "bookmarks.new.myCustomContainer.title": "My Dashboard",
+      "bookmarks.new.myCustomContainer.description":
+          "Custom dashboard exercise",
+    });
+
   },
   defaultSettings: {
     'application.defaultDisplayMode': DisplayMode.VIEW,
