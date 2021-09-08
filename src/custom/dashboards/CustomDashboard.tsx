@@ -6,7 +6,7 @@
  *******************************************************************************/
 import React from "react";
 import {Container, ContainerFullValue} from "@activeviam/activeui-sdk";
-import { enhancedPivotTable } from "../../widgets/initialWidgets/enhancedPivotTable";
+import {enhancedPivotTable} from "../widgets/initialWidgets/enhancedPivotTable";
 
 
 

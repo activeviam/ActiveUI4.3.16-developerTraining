@@ -131,7 +131,7 @@ handlersContextMenu = (handlersContextMenu as any[]).concat([
 ]);
 
 // Only add the KPI action if we have ActiveMonitor enabled
-if (window.env.serverUrls.activeMonitor) {
+if (window.env.activeMonitorServerUrl) {
   handlersContextMenu.push('edit-kpi');
 }
 
