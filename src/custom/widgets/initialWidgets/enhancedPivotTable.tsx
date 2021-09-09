@@ -15,6 +15,7 @@ const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
  * An enhanced version of the pivot table widget
  */
 let handlersContextMenu = [
+    //TODO: ex 5.3 Add your SingleValue Custom action key
   {
     key: 'sub-menu',
     args: {
@@ -23,10 +24,6 @@ let handlersContextMenu = [
         textPath: 'compute',
       },
       menuItems: [
-        'compute-difference',
-        'compute-avg',
-        'compute-sum',
-        'day-to-day',
       ],
     },
   },
@@ -191,7 +188,7 @@ const enhancedPivotTable = {
     : 'data',
   name: 'Pivot Table',
   type: pivotTableDefaultConfiguration.containerKey,
-  description: 'An Excel like Pivot Table',
+  description: 'Enhanced Pivot Table',
   value: _.merge({}, pivotTableDefaultConfiguration, {
     // Uncomment below to use predefined bookmark state rather then default settings
     // 'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
