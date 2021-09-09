@@ -9,9 +9,13 @@ import _ from 'lodash';
 
 import {StartCustomContainerPlugin} from './components/Start';
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
+import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
-import {enhancedPivotTable} from "./custom/widgets/initialWidgets/enhancedPivotTable";
-import {enhancedTabular} from "./custom/widgets/initialWidgets/enhancedTabular";
+import {
+  enhancedPivotTable,
+  enhancedPivotTableHandlersContextMenu
+} from "./custom/widgets/initialWidgets/enhancedPivotTable";
+import {enhancedTabular, enhancedTabularHandlersContextMenu} from "./custom/widgets/initialWidgets/enhancedTabular";
 import {store} from './state/store';
 import {startBookmark} from './configurations/startBookmark';
 import LoadingOrApp from './LoadingOrApp';
@@ -37,8 +41,9 @@ const activeUI = createActiveUI({
     //TODO:  Ex4 - Add custom translation for the container of the custom dashboard
     return _.merge({}, coreTranslation, projectTranslation, {
       "bookmarks.new.myCustomContainer.title": "My Dashboard",
-      "bookmarks.new.myCustomContainer.description":
-          "Custom dashboard exercise",
+      "bookmarks.new.myCustomContainer.description": "Custom dashboard exercise",
+      "showPnLDiffBetweenDesks": "show as singleValue",
+      showSingleValue: "showPnLDiffBetweenDesks",
     });
 
   },
@@ -75,6 +80,13 @@ const activeUI = createActiveUI({
     },
     'placeholder.handlers.click': ['open-content-editor'],
     'userFilters.enabled': true,
+    // settings for default context menus
+    "tabular-view.handlers.contextmenu": enhancedTabularHandlersContextMenu,
+    "pivot-table.handlers.contextmenu": enhancedPivotTableHandlersContextMenu,
+    // Hide the default table/pivot widgets and make our own better ones
+    "bookmarks.favorites.tabular-view.hidden": true,
+    "bookmarks.favorites.pivot-table.hidden": true,
+    "bookmarks.favorites.chart.hidden": true,
     // Custom, enhanced widgets used in Ex5
     "bookmarks.favorites.enhanced-tabular": enhancedTabular,
     "bookmarks.favorites.enhanced-pivot-table": enhancedPivotTable,
@@ -82,8 +94,14 @@ const activeUI = createActiveUI({
   },
   plugins: {
     // TODO: Ex4 - add your custom container to the project
-    container: [StartCustomContainerPlugin, MyCustomDashboardPlugin],
-    action: [OpenContentEditorPlugin],
+    container: [
+        StartCustomContainerPlugin,
+        MyCustomDashboardPlugin
+    ],
+    action: [
+        OpenContentEditorPlugin,
+        showSingleValue
+    ],
   },
 });
 
