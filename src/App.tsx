@@ -35,6 +35,7 @@ const activeUI = createActiveUI({
     ]);
 
     //TODO:  Ex4 - Add custom translation for the container of the custom dashboard
+    //TODO: Ex5 - Add translation for your custom action
     return _.merge({}, coreTranslation, projectTranslation, {
       "bookmarks.new.myCustomContainer.title": "My Dashboard",
       "bookmarks.new.myCustomContainer.description":
