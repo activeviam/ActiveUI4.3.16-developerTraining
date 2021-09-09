@@ -9,6 +9,9 @@ import _ from 'lodash';
 
 import {StartCustomContainerPlugin} from './components/Start';
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
+import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
+import {enhancedPivotTable} from "./custom/widgets/initialWidgets/enhancedPivotTable";
+import {enhancedTabular} from "./custom/widgets/initialWidgets/enhancedTabular";
 import {store} from './state/store';
 import {startBookmark} from './configurations/startBookmark';
 import LoadingOrApp from './LoadingOrApp';
@@ -72,6 +75,10 @@ const activeUI = createActiveUI({
     },
     'placeholder.handlers.click': ['open-content-editor'],
     'userFilters.enabled': true,
+    // Custom, enhanced widgets used in Ex5
+    "bookmarks.favorites.enhanced-tabular": enhancedTabular,
+    "bookmarks.favorites.enhanced-pivot-table": enhancedPivotTable,
+    "bookmarks.favorites.enhanced-chart": enhancedChart,
   },
   plugins: {
     // TODO: Ex4 - add your custom container to the project
