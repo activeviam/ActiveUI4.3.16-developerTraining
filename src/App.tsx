@@ -65,7 +65,6 @@ const activeUI = createActiveUI({
       "bookmarks.new.myCustomContainer.title": "My Dashboard",
       "bookmarks.new.myCustomContainer.description": "Custom dashboard exercise",
       "showPnLDiffBetweenDesks": "show as singleValue",
-      showSingleValue: "showPnLDiffBetweenDesks",
     });
 
   },
