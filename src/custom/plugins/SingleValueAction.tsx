@@ -6,10 +6,24 @@
 // set debugger in each property step before the function return
 // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-action-plugin
 export const showSingleValue = {
-    key: "show-single-value",
+    key: 'show-diff-between-desks-value',
     createProperties(parameters, activeUI) {
-        return {
-            // ...
-        };
-    },
+      return {
+        isAvailable(actionPayload) {
+          debugger;
+          return true;
+        },
+        getCaption({ widgetApi }) {
+          return { textPath: "showPnLDiffBetweenDesks" };
+        },
+        getIconSrcKey(actionPayload) {
+          debugger;
+          return 'menuItem.icon.dockInLegend';
+        },
+        execute(event, actionPayload) {
+          debugger;
+          console.log("actionPayload", actionPayload);
+        }
+      };
+    }
 };
