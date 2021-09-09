@@ -8,7 +8,13 @@
 // =================================================================
 //  Embed dashboard into container for rendering
 // =================================================================
-// 4.1.1 TODO: create a simple component that renders "Hello world"
+//    TODO: Ex4.1 create a simple component that renders "Hello world"
+//    TODO: Ex4.3 -
+//           - create  <div> with width 50%, height 100%
+//           - put myPivotTable contaienr in the first div
+//    TODO: Ex4.4
+//           - add container with childKey myChart, and defaultValue MyChartValue
+//
 function MyDashboardComponent() {
     return (
         <div
