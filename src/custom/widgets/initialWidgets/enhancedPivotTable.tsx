@@ -7,6 +7,7 @@
 
 import {pluginContainerPivotTable} from '@activeviam/activeui-sdk';
 import _ from 'lodash';
+import {showSingleValue} from "../../plugins/SingleValueAction";
 
 const pivotTableStaticProperties = pluginContainerPivotTable.staticProperties;
 const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
@@ -15,6 +16,7 @@ const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
  * An enhanced version of the pivot table widget
  */
 let handlersContextMenu = [
+  showSingleValue.key,
   {
     key: 'sub-menu',
     args: {
@@ -23,10 +25,6 @@ let handlersContextMenu = [
         textPath: 'compute',
       },
       menuItems: [
-        'compute-difference',
-        'compute-avg',
-        'compute-sum',
-        'day-to-day',
       ],
     },
   },
@@ -191,7 +189,7 @@ const enhancedPivotTable = {
     : 'data',
   name: 'Pivot Table',
   type: pivotTableDefaultConfiguration.containerKey,
-  description: 'An Excel like Pivot Table',
+  description: 'Enhanced Pivot Table',
   value: _.merge({}, pivotTableDefaultConfiguration, {
     // Uncomment below to use predefined bookmark state rather then default settings
     // 'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,

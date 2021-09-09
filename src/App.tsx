@@ -1,13 +1,13 @@
-import React from 'react';
-import {
-  createActiveUI,
-  ActiveUIProvider,
-  DisplayMode,
-} from '@activeviam/activeui-sdk';
-import {Provider} from 'react-redux';
+import {ActiveUIProvider, createActiveUI,} from '@activeviam/activeui-sdk';
 import _ from 'lodash';
+import React from 'react';
+import {Provider} from 'react-redux';
+import {contentEditorConfigurationSettingKey} from './components/drawers/contentEditor/ContentEditor';
+import {OpenContentEditorPlugin} from './components/OpenContentEditor';
 
 import {StartCustomContainerPlugin} from './components/Start';
+import {startBookmark} from './configurations/startBookmark';
+import {bookmarkTreeHandlersContextMenu} from "./custom/configurations/bookmarkTree";
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
 import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
@@ -16,17 +16,39 @@ import {
   enhancedPivotTableHandlersContextMenu
 } from "./custom/widgets/initialWidgets/enhancedPivotTable";
 import {enhancedTabular, enhancedTabularHandlersContextMenu} from "./custom/widgets/initialWidgets/enhancedTabular";
-import {store} from './state/store';
-import {startBookmark} from './configurations/startBookmark';
+import {activeMonitorServerUrl, activePivotServerUrl, contentServerUrl,} from './env';
 import LoadingOrApp from './LoadingOrApp';
-import {OpenContentEditorPlugin} from './components/OpenContentEditor';
-import {serializedShareAction} from './components/header/file/SubMenu';
-import {contentEditorConfigurationSettingKey} from './components/drawers/contentEditor/ContentEditor';
-import {
-  activeMonitorServerUrl,
-  activePivotServerUrl,
-  contentServerUrl,
-} from './env';
+import {store} from './state/store';
+
+
+let defaultSettings = {
+  // default settings from sandboxes
+  "application.home.fallback": startBookmark("Start page"),
+  "dashboard.actions": [],
+  "dashboard.quickActions": [],
+  "bookmarks.favorites.discovery-tree.hidden": true,
+  "bookmarks.favorites.content-editor.hidden": true,
+  "bookmarks.favorites.state-editor.hidden": true,
+  "bookmark-tree.handlers.contextmenu": bookmarkTreeHandlersContextMenu,
+  [contentEditorConfigurationSettingKey]: {
+    autoSwitchToFieldsOnEmptyWidget: true,
+  },
+  "placeholder.handlers.click": ["open-content-editor"],
+  // settings for default context menus
+  "tabular-view.handlers.contextmenu": enhancedTabularHandlersContextMenu,
+  "pivot-table.handlers.contextmenu": enhancedPivotTableHandlersContextMenu,
+  // Hide the default table/pivot widgets and make our own better ones
+  "bookmarks.favorites.tabular-view.hidden": true,
+  "bookmarks.favorites.pivot-table.hidden": true,
+  "bookmarks.favorites.chart.hidden": true,
+  // Custom, enhanced widgets
+  "bookmarks.favorites.enhanced-tabular": enhancedTabular,
+  "bookmarks.favorites.enhanced-pivot-table": enhancedPivotTable,
+  "bookmarks.favorites.enhanced-chart": enhancedChart,
+
+  showLegacyCharts: true,
+  showLegacyMaps: true,
+};
 
 const activeUI = createActiveUI({
   // Create React App handles uncaught errors in development only, not in production.
@@ -47,51 +69,7 @@ const activeUI = createActiveUI({
     });
 
   },
-  defaultSettings: {
-    'application.defaultDisplayMode': DisplayMode.VIEW,
-    enforceViewModeOnReadonlyBookmark: true,
-    'application.home.fallback': startBookmark('Start page'),
-    'dashboard.actions': [],
-    'dashboard.quickActions': [],
-    'bookmarks.favorites.discovery-tree.hidden': true,
-    'bookmarks.favorites.content-editor.hidden': true,
-    'bookmarks.favorites.style-editor.hidden': true,
-    'bookmarks.favorites.state-editor.hidden': true,
-    'bookmark-tree.handlers.contextmenu': [
-      'rename-server',
-      'delete-server',
-      'separator',
-      'create-folder',
-      'separator',
-      'load-bookmark',
-      'rename-bookmark',
-      'move-bookmark',
-      serializedShareAction,
-      'add-to-favorites',
-      'separator',
-      'open-widget-to-modify',
-      'make-home-page',
-      'bookmark-state-editor',
-      'separator',
-      'delete-bookmark',
-    ],
-    [contentEditorConfigurationSettingKey]: {
-      autoSwitchToFieldsOnEmptyWidget: true,
-    },
-    'placeholder.handlers.click': ['open-content-editor'],
-    'userFilters.enabled': true,
-    // settings for default context menus
-    "tabular-view.handlers.contextmenu": enhancedTabularHandlersContextMenu,
-    "pivot-table.handlers.contextmenu": enhancedPivotTableHandlersContextMenu,
-    // Hide the default table/pivot widgets and make our own better ones
-    "bookmarks.favorites.tabular-view.hidden": true,
-    "bookmarks.favorites.pivot-table.hidden": true,
-    "bookmarks.favorites.chart.hidden": true,
-    // Custom, enhanced widgets used in Ex5
-    "bookmarks.favorites.enhanced-tabular": enhancedTabular,
-    "bookmarks.favorites.enhanced-pivot-table": enhancedPivotTable,
-    "bookmarks.favorites.enhanced-chart": enhancedChart,
-  },
+  defaultSettings: defaultSettings,
   plugins: {
     // TODO: Ex4 - add your custom container to the project
     container: [
