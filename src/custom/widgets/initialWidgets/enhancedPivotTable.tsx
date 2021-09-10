@@ -192,7 +192,7 @@ const enhancedPivotTable = {
   description: 'Enhanced Pivot Table',
   value: _.merge({}, pivotTableDefaultConfiguration, {
     // Uncomment below to use predefined bookmark state rather then default settings
-    // 'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
+    'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
     body: {configuration: {tabular: {hideAddButton: true}}},
   }),
 };
