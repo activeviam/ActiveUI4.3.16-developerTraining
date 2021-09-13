@@ -10,31 +10,6 @@ import React from "react";
 export const countKpi = {
   key: "count-kpi",
   createProperties(parameters, activeUI) {
-    return {
-      isAvailable({ columnProps }) {
-        return true;
-      },
-      getCellStyle(rowIdx, columnProps) {
-        let color = "black";
-        if (
-          columnProps.data.content[rowIdx][columnProps.colIdx] !== null &&
-          columnProps.data.content[rowIdx][columnProps.colIdx] !== undefined
-        ) {
-          const cellValue =
-            columnProps.data.content[rowIdx][columnProps.colIdx].value;
-          if (cellValue < 20) {
-            color = "red";
-          } else if (cellValue > 20 && cellValue <= 40) {
-            color = "orange";
-          } else {
-            color = "green";
-          }
-          return { color };
-        }
-      },
-      renderCell(props) {
-        return <activeUI.widgets.tableCells.CaptionCellRenderer {...props} />;
-      },
-    };
+    // ...
   },
 };
