@@ -84,7 +84,8 @@ const activeUI = createActiveUI({
     ],
     action: [
         OpenContentEditorPlugin,
-        showSingleValue
+        showSingleValue,
+        filterOnClickPlugin
     ],
     "cell-renderer":[countKpi]
   },
