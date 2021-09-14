@@ -49,6 +49,9 @@ let defaultSettings = {
 
   showLegacyCharts: true,
   showLegacyMaps: true,
+  // 5.6.1 TODO: register filterOnClickPlugin key for chart.handlers.click
+  // refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/settings.html#charthandlersclick
+
 };
 
 const activeUI = createActiveUI({
