@@ -6,6 +6,7 @@
  *******************************************************************************/
 import React from "react";
 import {Container, ContainerFullValue} from "@activeviam/activeui-sdk";
+import {ctpyPageAction} from "../plugins/CounterpartyPageAction";
 import {enhancedPivotTable} from "../widgets/initialWidgets/enhancedPivotTable";
 
 
@@ -31,6 +32,13 @@ const MyPivotValue: ContainerFullValue = {
     name: "Pivot Table",
     type: "container",
     value: {
+        // TODO: Ex6.1.2 - Add key of ctpyPageAction to the pivot's context menu (note contextmenu is an array)
+        // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/settings.html#pivot-tablehandlerscontextmenu
+        "pivot-table.handlers.contextmenu": [ctpyPageAction.key],
+        // TODO: Ex6.1.5 - Add key of showTop3Value to the quick Action
+        // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/settings.html#pivot-tablequickactions
+        // Inherit the default list of actions
+        // ...
         style: {},
         showTitleBar: true,
         containerKey: "pivot-table",
