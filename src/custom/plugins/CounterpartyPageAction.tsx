@@ -1,6 +1,9 @@
 // 6.1.3 TODO: import the ctpyPage from 6.1.2
 // ...
 
+import {DashboardApi} from "@activeviam/activeui-sdk";
+import {ctpyPage} from "../components/dashboards/CounterpartyPage";
+
 const counterPartyHierarchy = "[CounterParty].[CounterParty]";
 
 // 6.1.1 TODO: reuse / refactor your code to create a function for both 
@@ -8,7 +11,17 @@ const counterPartyHierarchy = "[CounterParty].[CounterParty]";
 // make use of activeUI.data.getLocationsInfoFromPayload
 // refer to showcase example > Extract Locations Information
 const getCounterpartyFromPayload = (payload, activeUI) => {
-   
+    const location = activeUI.data.getLocationsInfoFromPayload(payload)[0];
+    if (location === undefined) {
+        return undefined;
+    } else {
+        const {captions: ctpyCaption} =
+        location.members[counterPartyHierarchy] || {};
+        if (ctpyCaption === undefined) {
+            return undefined;
+        }
+        return ctpyCaption;
+    }
 };
 
 // 6.1.1 
@@ -37,6 +50,12 @@ export const ctpyPageAction = {
                 // Pay attention that this action is triggered within a custom container. 
                 // the parent dashboard is the parent of the container where this widget resides in
                 // ...
+                const newPage = ctpyPage(counterParty);
+                // pay attention that this action is triggered within a custom container.
+                // the parent dashboard is the parent of the container where this widget resides in
+                const widgetParent: any = widgetApi.getParent();
+                const parentDashboard: DashboardApi = widgetParent.getParentDashboard();
+                parentDashboard.addPage(newPage);
             }
         };
     }

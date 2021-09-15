@@ -7,6 +7,7 @@
 import React from "react";
 import {Container, ContainerFullValue} from "@activeviam/activeui-sdk";
 import {ctpyPageAction} from "../plugins/CounterpartyPageAction";
+import {showTop3Value} from "../plugins/Top3CtpyAction";
 import {enhancedPivotTable} from "../widgets/initialWidgets/enhancedPivotTable";
 
 
@@ -39,6 +40,11 @@ const MyPivotValue: ContainerFullValue = {
         // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/settings.html#pivot-tablequickactions
         // Inherit the default list of actions
         // ...
+        "pivot-table.quickActions": [
+            "update-query-mode",
+            "full-size",
+            showTop3Value.key,
+        ],
         style: {},
         showTitleBar: true,
         containerKey: "pivot-table",

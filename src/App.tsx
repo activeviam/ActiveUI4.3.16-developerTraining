@@ -10,8 +10,10 @@ import {startBookmark} from './configurations/startBookmark';
 import {bookmarkTreeHandlersContextMenu} from "./custom/configurations/bookmarkTree";
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
 import {filterOnClickPlugin} from "./custom/plugins/ChartActions";
+import {ctpyPageAction} from "./custom/plugins/CounterpartyPageAction";
 import {countKpi} from "./custom/plugins/CountKpiRenderer";
 import {showSingleValue} from "./custom/plugins/SingleValueAction";
+import {showTop3Value} from "./custom/plugins/Top3CtpyAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
 import {
   enhancedPivotTable,
@@ -72,6 +74,11 @@ const activeUI = createActiveUI({
       "bookmarks.new.myCustomContainer.title": "My Dashboard",
       "bookmarks.new.myCustomContainer.description": "Custom dashboard exercise",
       "showPnLDiffBetweenDesks": "show as singleValue",
+      showSingleValue: "Show PnL Diff Between Desks",
+      // 6.1.1 TODO: add translation for counterparty page action
+      ctpyPage: "Counterparty breakdown page",
+      // 6.1.4 TODO: add translation for Top 3 Counterparties in Pnl.SUM
+      showTop3Ctpy: "Top 3 Counterparties in Pnl.SUM",
     });
 
   },
@@ -85,7 +92,9 @@ const activeUI = createActiveUI({
     action: [
         OpenContentEditorPlugin,
         showSingleValue,
-        filterOnClickPlugin
+        filterOnClickPlugin,
+        ctpyPageAction as any,
+        showTop3Value
     ],
     "cell-renderer":[countKpi]
   },

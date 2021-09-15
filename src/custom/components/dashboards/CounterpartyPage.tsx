@@ -4,7 +4,9 @@
 // 3. set counterparty as the page name
 // you can copy the content and layout from the bookmark state of exercise 5.6
 // Refer to showcase example > Story Telling with Dashboard Pages#pnlByDeskPage.
-export const ctpyPage = (counterparty: string) => {
+import {PageDescription} from "@activeviam/activeui-sdk";
+
+export const ctpyPage: (counterparty: string) => PageDescription = counterparty => {
   return {
     content: [
       {
@@ -41,7 +43,7 @@ export const ctpyPage = (counterparty: string) => {
       {
         key: 'ctpyPivot',
         bookmark: {
-          name: 'Pivot Table',
+          name: 'counter party Pivot Table',
           type: 'container',
           value: {
             style: {},
