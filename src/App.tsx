@@ -12,6 +12,7 @@ import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
 import {filterOnClickPlugin} from "./custom/plugins/ChartActions";
 import {ctpyPageAction} from "./custom/plugins/CounterpartyPageAction";
 import {countKpi} from "./custom/plugins/CountKpiRenderer";
+import {iconPlugin} from "./custom/plugins/CustomIcon";
 import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {showTop3Value} from "./custom/plugins/Top3CtpyAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
@@ -98,7 +99,7 @@ const activeUI = createActiveUI({
     ],
     "cell-renderer":[countKpi],
     // 7.1.2 TODO: register your custom icon under icon plugin
-    // ...
+    icon: [iconPlugin]
   },
 });
 

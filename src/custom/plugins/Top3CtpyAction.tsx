@@ -23,6 +23,7 @@ import {
     ActionPlugin,
     SelectNode,
 } from "@activeviam/activeui-sdk";
+import {iconPlugin} from "./CustomIcon";
 
 const getTopValueMdx = `
         SELECT
@@ -85,7 +86,7 @@ export const showTop3Value: ActionPlugin = {
                 return { textPath: "showTop3Ctpy" };
             },
             getIconSrcKey(actionPayload: DockActionPayload) {
-                return "menuItem.icon.dockInLegend";
+                return iconPlugin.key;
             },
             execute(event, actionPayload: DockActionPayload) {
                 const { widgetApi } = actionPayload;
