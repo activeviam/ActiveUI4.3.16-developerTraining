@@ -86,6 +86,8 @@ export const showTop3Value: ActionPlugin = {
                 return { textPath: "showTop3Ctpy" };
             },
             getIconSrcKey(actionPayload: DockActionPayload) {
+                // 7.1.3 TODO: change icon to the custom icon by returning key of icon plugin
+                // ...
                 return iconPlugin.key;
             },
             execute(event, actionPayload: DockActionPayload) {
