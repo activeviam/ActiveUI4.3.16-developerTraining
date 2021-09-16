@@ -96,7 +96,9 @@ const activeUI = createActiveUI({
         ctpyPageAction as any,
         showTop3Value
     ],
-    "cell-renderer":[countKpi]
+    "cell-renderer":[countKpi],
+    // 7.1.2 TODO: register your custom icon under icon plugin
+    // ...
   },
 });
 
