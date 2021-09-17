@@ -9,6 +9,7 @@ import {pluginContainerPivotTable} from '@activeviam/activeui-sdk';
 import _ from 'lodash';
 import {countKpi} from "../../plugins/CountKpiRenderer";
 import {showSingleValue} from "../../plugins/SingleValueAction";
+import {createWhatIf, updateBranchRowAction} from "../../plugins/WhatIfAction";
 
 const pivotTableStaticProperties = pluginContainerPivotTable.staticProperties;
 const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
@@ -29,7 +30,6 @@ let handlersContextMenu = [
       ],
     },
   },
-  'separator',
 ];
 
 // Add the core handlers context menu
@@ -189,10 +189,12 @@ const enhancedPivotTable = {
   description: 'Enhanced Pivot Table',
   value: _.merge({}, pivotTableDefaultConfiguration, {
     // Uncomment below to use predefined bookmark state rather then default settings
-    'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
+    // 'pivot-table.handlers.contextmenu': [enhancedPivotTableHandlersContextMenu],
+    'pivot-table.quickActions': [createWhatIf.key, "update-query-mode", "full-size"],
     body: {
       configuration: {
         tabular: {
+          rowActions: [updateBranchRowAction.key],
           cellRenderers: [countKpi.key],
           hideAddButton: true
         }

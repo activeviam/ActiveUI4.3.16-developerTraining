@@ -15,6 +15,7 @@ import {countKpi} from "./custom/plugins/CountKpiRenderer";
 import {iconPlugin} from "./custom/plugins/CustomIcon";
 import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {showTop3Value} from "./custom/plugins/Top3CtpyAction";
+import {createWhatIf, updateBranchRowAction} from "./custom/plugins/WhatIfAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
 import {
   enhancedPivotTable,
@@ -80,6 +81,8 @@ const activeUI = createActiveUI({
       ctpyPage: "Counterparty breakdown page",
       // 6.1.4 TODO: add translation for Top 3 Counterparties in Pnl.SUM
       showTop3Ctpy: "Top 3 Counterparties in Pnl.SUM",
+      createWhatIfCaption: "Create a new branch",
+
     });
 
   },
@@ -95,11 +98,13 @@ const activeUI = createActiveUI({
         showSingleValue,
         filterOnClickPlugin,
         ctpyPageAction as any,
-        showTop3Value
+        showTop3Value,
+        createWhatIf
     ],
     "cell-renderer":[countKpi],
     // 7.1.2 TODO: register your custom icon under icon plugin
-    icon: [iconPlugin]
+    icon: [iconPlugin],
+    "row-action": [updateBranchRowAction]
   },
 });
 
