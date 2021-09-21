@@ -92,3 +92,5 @@ For this app you can define Environment variables within the `env.*.js` files un
 - Specific environment variables, e.g. `REACT_APP_ACTIVE_PIVOT_SERVER_URL`.
 - If none of those are defined then we fallback to connecting to the base URL the app is served at.
   e.g. If the app is served at `http://example.com:8080/app` then we will try to connect to `http://example.com:8080`.
+
+## Exercices
