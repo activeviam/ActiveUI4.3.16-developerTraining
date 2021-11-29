@@ -10,7 +10,7 @@ const themePlugin = {
     // returns an object of type ThemeImplementationProperties
     createProperties(parameters, activeUI) {
         // TODO: Ex2 - Define your own theme.
-        // Refer to https://activeviam.com/activeui/documentation/4.3.11-rc//dev/reference/sdk-api/activeui-sdk.userthemeconfig.html
+        // Refer to https://activeviam.com/activeui/documentation/4.3.16//dev/reference/sdk-api/activeui-sdk.userthemeconfig.html
         // for the available options
         return {
            // ...
