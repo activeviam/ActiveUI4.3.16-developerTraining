@@ -34,7 +34,8 @@ export default function SubMenu(props: SubMenuProps) {
         {translator.format('bookmarks.dashboard.logout')}
       </Menu.Item>
 
-        // TODO: Ex-2 generate menu items by lopping through themes.listThemes()
+        {activeUI.theming.listThemes()}
+        // TODO: Ex-2 generate menu items by lopping through theming.listThemes()
     </Menu.SubMenu>
   );
 }
