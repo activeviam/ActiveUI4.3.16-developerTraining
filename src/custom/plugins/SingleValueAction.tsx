@@ -104,15 +104,6 @@ export const showSingleValue = {
             debugger;
           console.log("actionPayload", actionPayload);
             //TODO: 5.3 display a modal with Hello World
-            Modal.info({
-                title: "hello World",
-                content: (
-                    <div>
-                        Hello world
-                    </div>
-                )
-            }
-            )
         }
       };
     },
