@@ -5,7 +5,7 @@
 // execute: use console.log to print out the object actionPayload
 // set debugger in each property step before the function return
 // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-action-plugin
-import {ActionPayload, ActiveUI} from "@activeviam/activeui-sdk";
+import {ActionPayload, ActiveUI, TabularHandlerActionPayload} from "@activeviam/activeui-sdk";
 
 const cityHierarchy = "[Geography].[City]";
 const currencyHierarchy = "[Currency].[Currency]";
@@ -37,8 +37,15 @@ export const showSingleValue = {
             // check if the widgetApi datasource uses mdx
             // check that the context is defined
             // check that currency and city are available in the payload
-          debugger;
-          return true;
+            const { actionSituation, widgetApi, context } = actionPayload as TabularHandlerActionPayload;
+        const isWidgetTabular = actionSituation === "tabular-handler";
+        const isWidgetNonStatic = widgetApi.getDataSource().usesMdx();
+        const isCellSelected = context !== undefined;
+        let cityAndCurrencyAvailable = getCityCurrencyFromPayload(actionPayload as ActionPayload, activeUI) !== undefined;
+
+
+        return isWidgetTabular && isWidgetNonStatic && isCellSelected && cityAndCurrencyAvailable;
+
         },
 
         getCaption( actionPayload : ActionPayload) {
