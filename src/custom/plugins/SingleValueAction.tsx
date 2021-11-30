@@ -32,11 +32,6 @@ export const showSingleValue = {
     createProperties(parameters: any, activeUI: ActiveUI) {
         return {
         isAvailable(actionPayload: ActionPayload) {
-            //TODO: 5.2 destructure the actionPayload to extract actionSituation, widgetApi and context
-            // assert if the action situation is "tabular-handler"
-            // check if the widgetApi datasource uses mdx
-            // check that the context is defined
-            // check that currency and city are available in the payload
         const { actionSituation, widgetApi, context } = actionPayload as TabularHandlerActionPayload;
         const isWidgetTabular = actionSituation === "tabular-handler";
         const isWidgetNonStatic = widgetApi.getDataSource().usesMdx();
@@ -57,8 +52,12 @@ export const showSingleValue = {
           return 'menuItem.icon.dockInLegend';
         },
         execute(event: React.SyntheticEvent, actionPayload: ActionPayload) {
-          debugger;
+            // TODO 5.3: use function created to obtain city and currency values
+            // TODO 5.3: adjust getSingleValueMdx to make use of the city and currency values
+
+            debugger;
           console.log("actionPayload", actionPayload);
+            //TODO: 5.3 display a modal with Hello World
         }
       };
     },
