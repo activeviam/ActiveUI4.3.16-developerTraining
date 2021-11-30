@@ -34,6 +34,7 @@ function MyDashboardComponent() {
 
 // 4.1.2 TODO: define a custom plugin that uses the MyDashboardComponent defined in 4.1
 // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/sdk-api/activeui-sdk.reactcontainerimplementationstaticproperties.html
+// for icons:  https://activeviam.jfrog.io/activeviam/activeui-generic-release/4.3.16/activeui-sdk-showcase-4.3.16.zip!/index.html#/Icons
 const MyCustomDashboardPlugin = {
     key: "myCustomContainer",
     staticProperties: {
