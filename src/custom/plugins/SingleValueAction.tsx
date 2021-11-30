@@ -1,4 +1,4 @@
-// 5.1.1 create and export an action plugin with the below values:
+// TODO: 5.1.1 create and export an action plugin with the below values:
 // isAvailable: to return true
 // getCaption: to return translation mapping showSingleValue
 // getIconSrcKey: choose a suitable icon key from showcase > Built-in Widgets > Icons
