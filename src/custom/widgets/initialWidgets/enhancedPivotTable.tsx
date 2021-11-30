@@ -15,7 +15,7 @@ const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
  * An enhanced version of the pivot table widget
  */
 let handlersContextMenu = [
-    //TODO: ex 5.3 Add your SingleValue Custom action key
+    //TODO: ex 5.1.2 Add your SingleValue Custom action key
   {
     key: 'sub-menu',
     args: {
@@ -190,6 +190,7 @@ const enhancedPivotTable = {
   type: pivotTableDefaultConfiguration.containerKey,
   description: 'Enhanced Pivot Table',
   value: _.merge({}, pivotTableDefaultConfiguration, {
+    // TODO 5.1.3 :
     // Uncomment below to use predefined bookmark state rather then default settings
     // 'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
     body: {configuration: {tabular: {hideAddButton: true}}},

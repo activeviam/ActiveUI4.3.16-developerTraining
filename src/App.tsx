@@ -34,7 +34,6 @@ const activeUI = createActiveUI({
       import(`./translations/${locale}.json`)
     ]);
 
-    //TODO:  Ex4 - Add custom translation for the container of the custom dashboard
     //TODO: Ex5 - Add translation for your custom action
     return _.merge({}, coreTranslation, projectTranslation, {
       "bookmarks.new.myCustomContainer.title": "My Dashboard",
@@ -80,9 +79,11 @@ const activeUI = createActiveUI({
     "bookmarks.favorites.enhanced-tabular": enhancedTabular,
     "bookmarks.favorites.enhanced-pivot-table": enhancedPivotTable,
     "bookmarks.favorites.enhanced-chart": enhancedChart,
+    // TODO: 5.1.5: remove the default pivot table, tabulat,  and chart widget using bookmarks.favorites.pivot-table.hidden,
+    // bookmarks.favorites.tabular-view.hidden and bookmarks.favorites.chart.hidden
   },
   plugins: {
-    // TODO: Ex4 - add your custom container to the project
+    // TODO: 5.1.4 Add the SingleValueAction to the list of Actions
     container: [StartCustomContainerPlugin, MyCustomDashboardPlugin],
     action: [OpenContentEditorPlugin],
   },
