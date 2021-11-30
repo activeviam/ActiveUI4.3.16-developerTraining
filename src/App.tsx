@@ -9,6 +9,7 @@ import _ from 'lodash';
 
 import {StartCustomContainerPlugin} from './components/Start';
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
+import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
 import {enhancedPivotTable} from "./custom/widgets/initialWidgets/enhancedPivotTable";
 import {enhancedTabular} from "./custom/widgets/initialWidgets/enhancedTabular";
@@ -79,13 +80,16 @@ const activeUI = createActiveUI({
     "bookmarks.favorites.enhanced-tabular": enhancedTabular,
     "bookmarks.favorites.enhanced-pivot-table": enhancedPivotTable,
     "bookmarks.favorites.enhanced-chart": enhancedChart,
-    // TODO: 5.1.5: remove the default pivot table, tabulat,  and chart widget using bookmarks.favorites.pivot-table.hidden,
+    // TODO: 5.1.5: remove the default pivot table, tabular,  and chart widget using bookmarks.favorites.pivot-table.hidden,
     // bookmarks.favorites.tabular-view.hidden and bookmarks.favorites.chart.hidden
+    "bookmarks.favorites.pivot-table.hidden": true,
+    "bookmarks.favorites.tabular-view.hidden": true,
+    "bookmarks.favorites.chart.hidden": true,
   },
   plugins: {
     // TODO: 5.1.4 Add the SingleValueAction to the list of Actions
     container: [StartCustomContainerPlugin, MyCustomDashboardPlugin],
-    action: [OpenContentEditorPlugin],
+    action: [OpenContentEditorPlugin, showSingleValue],
   },
 });
 

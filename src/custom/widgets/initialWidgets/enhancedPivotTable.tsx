@@ -7,6 +7,7 @@
 
 import {pluginContainerPivotTable} from '@activeviam/activeui-sdk';
 import _ from 'lodash';
+import {showSingleValue} from "../../plugins/SingleValueAction";
 
 const pivotTableStaticProperties = pluginContainerPivotTable.staticProperties;
 const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
@@ -16,6 +17,7 @@ const pivotTableDefaultConfiguration = pivotTableStaticProperties.initialValue;
  */
 let handlersContextMenu = [
     //TODO: ex 5.1.2 Add your SingleValue Custom action key
+    showSingleValue.key,
   {
     key: 'sub-menu',
     args: {
@@ -192,7 +194,7 @@ const enhancedPivotTable = {
   value: _.merge({}, pivotTableDefaultConfiguration, {
     // TODO 5.1.3 :
     // Uncomment below to use predefined bookmark state rather then default settings
-    // 'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
+    'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
     body: {configuration: {tabular: {hideAddButton: true}}},
   }),
 };

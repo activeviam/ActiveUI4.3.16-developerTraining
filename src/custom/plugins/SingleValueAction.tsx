@@ -18,7 +18,7 @@ export const showSingleValue = {
 
         getCaption( actionPayload : ActionPayload) {
           debugger;
-          return { textPath: "showPnLDiffBetweenDesks" };
+          return { textPath: "custom action" };
         },
         getIconSrcKey(actionPayload: ActionPayload) {
           debugger;
