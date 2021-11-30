@@ -37,7 +37,7 @@ export const showSingleValue = {
             // check if the widgetApi datasource uses mdx
             // check that the context is defined
             // check that currency and city are available in the payload
-            const { actionSituation, widgetApi, context } = actionPayload as TabularHandlerActionPayload;
+        const { actionSituation, widgetApi, context } = actionPayload as TabularHandlerActionPayload;
         const isWidgetTabular = actionSituation === "tabular-handler";
         const isWidgetNonStatic = widgetApi.getDataSource().usesMdx();
         const isCellSelected = context !== undefined;
