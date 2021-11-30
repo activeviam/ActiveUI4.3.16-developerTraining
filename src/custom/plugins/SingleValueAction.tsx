@@ -6,6 +6,7 @@
 // set debugger in each property step before the function return
 // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-action-plugin
 import {ActionPayload, ActiveUI, TabularHandlerActionPayload, Container} from "@activeviam/activeui-sdk";
+import {Modal} from "antd";
 import React from "react";
 
 const cityHierarchy = "[Geography].[City]";
@@ -39,7 +40,7 @@ function SingleValueContent(props: any) {
 }
 
 
-// TODO 5.3: adjust getSingleValueMdx to make use of the city and currency values
+// TODO 5.3: use getSingleValueMdx to make use of the city and currency values
 const getSingleValueMdx = (cellValue: any) => `
 SELECT
 NON EMPTY Hierarchize(
@@ -103,6 +104,15 @@ export const showSingleValue = {
             debugger;
           console.log("actionPayload", actionPayload);
             //TODO: 5.3 display a modal with Hello World
+            Modal.info({
+                title: "hello World",
+                content: (
+                    <div>
+                        Hello world
+                    </div>
+                )
+            }
+            )
         }
       };
     },
