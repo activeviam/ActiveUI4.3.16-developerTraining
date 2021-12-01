@@ -25,9 +25,9 @@ export const filterOnClickPlugin: ActionPlugin = {
         // 3. loop through each sibling, get dataSource and apply transformation using mdx api from ActiveUI
         // 4. apply filter in transformDataSource function
         // refer to showcase example > Miscellaneous > MDX Filtering
-        // https://activeviam.com/activeui/documentation/4.3.11/dev/guides/mdx-manipulation.html#filters
-        // https://activeviam.com/activeui/documentation/4.3.11/dev/reference/sdk-api/activeui-sdk.mdxapi.html
-        // https://activeviam.com/activeui/documentation/4.3.11/dev/reference/sdk-api/activeui-sdk.mdxfiltersapi.html
+        // https://activeviam.com/activeui/documentation/4.3.16/dev/guides/mdx-manipulation.html#filters
+        // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.mdxapi.html
+        // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.mdxfiltersapi.html
 
         const { widgetApi, datum } = actionPayload;
         const { mdx: mdxApi } = activeUI;
@@ -110,8 +110,8 @@ export const filterOnClickPlugin: ActionPlugin = {
         // you can use getNonEmptySiblings() to get all the siblings.
         // However you are only interested if the container key of the sibling is "pivot-table")
         // Refer to
-        // https://activeviam.com/activeui/documentation/4.3.11/dev/reference/sdk-api/activeui-sdk.chartapi.html
-        // https://activeviam.com/activeui/documentation/4.3.11/dev/reference/sdk-api/activeui-sdk.containerapi.html
+        // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.chartapi.html
+        // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.containerapi.html
         const currencyIndex = _.findIndex(
           widgetApi.getData().headers,
           (header) => header.value === currencyMember
