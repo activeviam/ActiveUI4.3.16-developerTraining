@@ -113,7 +113,7 @@ const enhancedChart = {
   category: "data",
   name: "Chart",
   type: "chart",
-  description: "Various types of charts",
+  description: "enhanced Various types of charts",
   value: _.merge({}, chartDefaultConfiguration, {
     "chart.handlers.contextmenu": enhancedChartHandlersContextMenu,
   }),

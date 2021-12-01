@@ -1,14 +1,15 @@
 import {
+  ActionImplementationProperties, ActionPayload,
   ActionPlugin,
   ActiveUI,
-  ChartHandlerActionPayload,
+  ChartHandlerActionPayload, WidgetApi,
 } from "@activeviam/activeui-sdk";
 import _ from "lodash";
 
 const currencyMember = "[Currency].[Currency].[Currency]";
 const currencyHierarchy = "[Currency].[Currency]";
 
-const siblingPivot = (widgetApi) =>
+const siblingPivot = (widgetApi: WidgetApi) =>
   _.filter(
     widgetApi.getNonEmptySiblings(),
     (sibling) => sibling.getBookmarkContainerKey() === "pivot-table"
@@ -16,9 +17,9 @@ const siblingPivot = (widgetApi) =>
 
 export const filterOnClickPlugin: ActionPlugin = {
   key: "filter-on-click",
-  createProperties(parameters, activeUI: ActiveUI) {
+  createProperties(parameters: any, activeUI: ActiveUI): ActionImplementationProperties {
     return {
-      execute(event, actionPayload: ChartHandlerActionPayload) {
+      execute(event: any, actionPayload: ActionPayload) {
         // 5.6.3 TODO:
         // 1. get selected currency from chart widgetApi
         // 2. get sibling pivot table from widgetApi
@@ -29,7 +30,9 @@ export const filterOnClickPlugin: ActionPlugin = {
         // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.mdxapi.html
         // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.mdxfiltersapi.html
 
-        const { widgetApi, datum } = actionPayload;
+        console.log("executing");
+
+        const { widgetApi, datum } = actionPayload as ChartHandlerActionPayload;
         const { mdx: mdxApi } = activeUI;
         const { filters: filterApi } = mdxApi;
 
@@ -40,7 +43,7 @@ export const filterOnClickPlugin: ActionPlugin = {
           widgetApi.getData().headers,
           (header) => header.value === currencyMember
         );
-        const currency = datum[currencyIndex];
+        const currency = datum? datum[currencyIndex] : undefined;
 
         // we get all the siblings which are pivot table
         const siblings = siblingPivot(widgetApi);
@@ -61,7 +64,7 @@ export const filterOnClickPlugin: ActionPlugin = {
             );
 
             // find the currency filter in the list of existing filter in the widget
-            let currencyFilter = _.find(widgetFilters, (filter) => {
+            let currencyFilter: any = _.find(widgetFilters, (filter) => {
               return filter.hierarchy === currencyHierarchy;
             });
 
@@ -84,7 +87,7 @@ export const filterOnClickPlugin: ActionPlugin = {
             }
 
             // we add the currency filter to the mdx
-            if (currencyFilter !== undefined) {
+            if (currencyFilter !== undefined && currency != undefined) {
               updatedSnd = filterApi.addFilter(
                 updatedSnd,
                 position,
@@ -100,8 +103,8 @@ export const filterOnClickPlugin: ActionPlugin = {
           });
         });
       },
-      isAvailable(actionPayload: ChartHandlerActionPayload) {
-        const { actionSituation, widgetApi, datum } = actionPayload;
+      isAvailable(actionPayload: ActionPayload) {
+        const { actionSituation, widgetApi, datum } = actionPayload as ChartHandlerActionPayload;
         // 5.6.2 TODO: return true only when
         // 1. actionSituation is "chart-handler"
         // 2. currency is available in the chart (you can derive members of the charts from the headers returned from widgetApi.getData())
@@ -117,6 +120,12 @@ export const filterOnClickPlugin: ActionPlugin = {
           (header) => header.value === currencyMember
         );
         const siblings = siblingPivot(widgetApi);
+
+        console.log("isAvailable")
+        console.log(  actionSituation === "chart-handler" &&
+            datum !== undefined &&
+            currencyIndex > -1 &&
+            siblings.length > 0)
 
         return (
           actionSituation === "chart-handler" &&

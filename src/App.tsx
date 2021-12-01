@@ -9,6 +9,7 @@ import {StartCustomContainerPlugin} from './components/Start';
 import {startBookmark} from './configurations/startBookmark';
 import {bookmarkTreeHandlersContextMenu} from "./custom/configurations/bookmarkTree";
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
+import {filterOnClickPlugin} from "./custom/plugins/ChartActions";
 import {countKpi} from "./custom/plugins/CountKpiRenderer";
 import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
@@ -51,6 +52,7 @@ let defaultSettings = {
   showLegacyMaps: true,
   // 5.6.1 TODO: register filterOnClickPlugin key for chart.handlers.click
   // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/settings.html#charthandlersclick
+  "chart.handlers.click": [filterOnClickPlugin.key],
 
 };
 
@@ -82,7 +84,8 @@ const activeUI = createActiveUI({
     ],
     action: [
         OpenContentEditorPlugin,
-        showSingleValue
+        showSingleValue,
+        filterOnClickPlugin
     ],
     "cell-renderer":[countKpi]
   },
