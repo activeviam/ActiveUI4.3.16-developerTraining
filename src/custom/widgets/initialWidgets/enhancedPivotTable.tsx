@@ -193,6 +193,7 @@ const enhancedPivotTable = {
   value: _.merge({}, pivotTableDefaultConfiguration, {
     // Uncomment below to use predefined bookmark state rather then default settings
     'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
+    // TODO 5.4 register the plugin from CountKpi
     body: {configuration: {tabular: {hideAddButton: true}}},
   }),
 };

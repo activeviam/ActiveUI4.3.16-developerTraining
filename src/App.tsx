@@ -72,6 +72,7 @@ const activeUI = createActiveUI({
   defaultSettings: defaultSettings,
   plugins: {
     // TODO: Ex4 - add your custom container to the project
+    // TODOL Ex5 - add the countKpi plugin as as cell-renderer
     container: [
         StartCustomContainerPlugin,
         MyCustomDashboardPlugin
