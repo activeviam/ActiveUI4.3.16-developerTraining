@@ -103,11 +103,6 @@ export const filterOnClickPlugin: ActionPlugin = {
 
 
 
-              // replaceFilter would destroy all filters on the same hierarchy
-              //console.log(mdxApi.base.parsing.toString(updatedSnd.statement));
-
-
-
       },
       isAvailable(actionPayload: ActionPayload) {
         const { actionSituation, widgetApi, datum } = actionPayload as ChartHandlerActionPayload;
