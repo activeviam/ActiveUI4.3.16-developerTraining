@@ -9,6 +9,7 @@ import {StartCustomContainerPlugin} from './components/Start';
 import {startBookmark} from './configurations/startBookmark';
 import {bookmarkTreeHandlersContextMenu} from "./custom/configurations/bookmarkTree";
 import MyCustomDashboardPlugin from "./custom/dashboards/CustomDashboard";
+import {countKpi} from "./custom/plugins/CountKpiRenderer";
 import {showSingleValue} from "./custom/plugins/SingleValueAction";
 import {enhancedChart} from "./custom/widgets/initialWidgets/enhancedChart";
 import {
@@ -81,6 +82,7 @@ const activeUI = createActiveUI({
         OpenContentEditorPlugin,
         showSingleValue
     ],
+    "cell-renderer":[countKpi]
   },
 });
 
