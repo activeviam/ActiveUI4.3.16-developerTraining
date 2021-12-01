@@ -11,17 +11,7 @@ const counterPartyHierarchy = "[CounterParty].[CounterParty]";
 // make use of activeUI.data.getLocationsInfoFromPayload
 // refer to showcase example > Extract Locations Information
 const getCounterpartyFromPayload = (payload, activeUI) => {
-    const location = activeUI.data.getLocationsInfoFromPayload(payload)[0];
-    if (location === undefined) {
-        return undefined;
-    } else {
-        const {captions: ctpyCaption} =
-        location.members[counterPartyHierarchy] || {};
-        if (ctpyCaption === undefined) {
-            return undefined;
-        }
-        return ctpyCaption;
-    }
+
 };
 
 // 6.1.1
