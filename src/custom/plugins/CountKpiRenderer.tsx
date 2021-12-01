@@ -6,7 +6,7 @@ import React from "react";
 // Otherwise: Orange
 // refer to:
 // showcase example > Cell Renderer
-// https://activeviam.com/activeui/documentation/4.3.11/dev/reference/plugins.html#implement-a-custom-cell-renderer-plugin
+// https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-cell-renderer-plugin
 export const countKpi = {
   key: "count-kpi",
   createProperties(parameters, activeUI) {
