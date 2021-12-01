@@ -7,6 +7,7 @@
 
 import {pluginContainerPivotTable} from '@activeviam/activeui-sdk';
 import _ from 'lodash';
+import {countKpi} from "../../plugins/CountKpiRenderer";
 import {showSingleValue} from "../../plugins/SingleValueAction";
 
 const pivotTableStaticProperties = pluginContainerPivotTable.staticProperties;
@@ -28,10 +29,6 @@ let handlersContextMenu = [
       ],
     },
   },
-  'separator',
-  'negative-values-render',
-  'stats-menu',
-  'remove-others',
   'separator',
 ];
 
@@ -194,7 +191,14 @@ const enhancedPivotTable = {
     // Uncomment below to use predefined bookmark state rather then default settings
     'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
     // TODO 5.4 register the plugin from CountKpi
-    body: {configuration: {tabular: {hideAddButton: true}}},
+    body: {
+      configuration: {
+        tabular: {
+          cellRenderers: [countKpi.key],
+          hideAddButton: true
+        }
+      }
+      },
   }),
 };
 
