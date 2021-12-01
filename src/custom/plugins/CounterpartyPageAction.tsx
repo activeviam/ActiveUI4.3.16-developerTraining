@@ -31,8 +31,11 @@ export const ctpyPageAction = {
         return {
             isAvailable(actionPayload) {
                 const { actionSituation, context } = actionPayload;
-
-                return true;
+                return (actionSituation === 'tabular-handler' &&
+                context !== undefined &&
+                context.target === 'cell' &&
+                context.renderableTabularHeader !== undefined &&
+                getCounterpartyFromPayload(actionPayload, activeUI) !== undefined)
             },
             getCaption({ widgetApi }) {
                 return { textPath: "ctpyPage" };
