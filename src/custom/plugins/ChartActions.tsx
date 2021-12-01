@@ -1,14 +1,14 @@
 import {
   ActionPlugin,
   ActiveUI,
-  ChartHandlerActionPayload,
+  ChartHandlerActionPayload, WidgetApi,
 } from "@activeviam/activeui-sdk";
 import _ from "lodash";
 
 const currencyMember = "[Currency].[Currency].[Currency]";
 const currencyHierarchy = "[Currency].[Currency]";
 
-const siblingPivot = (widgetApi) =>
+const siblingPivot = (widgetApi: WidgetApi) =>
   _.filter(
     widgetApi.getNonEmptySiblings(),
     (sibling) => sibling.getBookmarkContainerKey() === "pivot-table"
@@ -33,72 +33,7 @@ export const filterOnClickPlugin: ActionPlugin = {
         const { mdx: mdxApi } = activeUI;
         const { filters: filterApi } = mdxApi;
 
-        // we are unable to tell which member the data in datum belongs to
-        // hence we use the column header to find the index of the member that we are interested in
-        // we apply the index to datum to obtain the selected value
-        const currencyIndex = _.findIndex(
-          widgetApi.getData().headers,
-          (header) => header.value === currencyMember
-        );
-        const currency = datum[currencyIndex];
 
-        // we get all the siblings which are pivot table
-        const siblings = siblingPivot(widgetApi);
-
-        // we apply the currency value as a filter in each of the sibling table
-        _.forEach(siblings, (sibling) => {
-          const datasource = sibling.getDataSource();
-          mdxApi.transformDataSource(datasource, (snd) => {
-            console.log("snd", snd);
-            // as we are modifying the the snd, we should clone it in order to prevent mutation of object
-            let updatedSnd = _.cloneDeep(snd);
-            let position = 0;
-
-            // retrieve the list of filters used in the sibling widget
-            const widgetFilters = filterApi.selectFilters(
-              updatedSnd,
-              filterApi.selectors.AllSelector.create()
-            );
-
-            // find the currency filter in the list of existing filter in the widget
-            let currencyFilter = _.find(widgetFilters, (filter) => {
-              return filter.hierarchy === currencyHierarchy;
-            });
-
-            // if currency filter does not exists, we add new filter
-            // else we replace the filter
-            if (currencyFilter === undefined) {
-              currencyFilter = {
-                key: "explicit",
-                hierarchy: currencyHierarchy,
-                value: { mode: "include" },
-              };
-            } else {
-              // find the position of the currency filter so that we can replace it in the same position
-              position = filterApi.getPosition(updatedSnd, currencyFilter);
-              // replaceFilter would destroy all filters on the same hierarchy
-              //console.log(mdxApi.base.parsing.toString(updatedSnd.statement));
-              if (position >= 0) {
-                updatedSnd.statement = currencyFilter.remove();
-              }
-            }
-
-            // we add the currency filter to the mdx
-            if (currencyFilter !== undefined) {
-              updatedSnd = filterApi.addFilter(
-                updatedSnd,
-                position,
-                currencyFilter.key,
-                currencyFilter.hierarchy,
-                {
-                  members: [currency.value.toString()],
-                  mode: currencyFilter.value.mode,
-                }
-              );
-            }
-            return updatedSnd;
-          });
-        });
       },
       isAvailable(actionPayload: ChartHandlerActionPayload) {
         const { actionSituation, widgetApi, datum } = actionPayload;
@@ -112,18 +47,9 @@ export const filterOnClickPlugin: ActionPlugin = {
         // Refer to
         // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.chartapi.html
         // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.containerapi.html
-        const currencyIndex = _.findIndex(
-          widgetApi.getData().headers,
-          (header) => header.value === currencyMember
-        );
-        const siblings = siblingPivot(widgetApi);
 
-        return (
-          actionSituation === "chart-handler" &&
-          datum !== undefined &&
-          currencyIndex > -1 &&
-          siblings.length > 0
-        );
+        return false;
+        ;
       },
     };
   },
