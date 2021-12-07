@@ -92,12 +92,8 @@ export const createWhatIf = {
           getContainer: () => document.getElementById("popup"),
           okText: "Create branch",
           content: (
-              <EnterBranchNamePopup
-                  branchName={branchName}
-                  onChange={(newName) => {
-                    branchName=newName;
-                  }}
-              />
+              //TODO: use the EnterBranchNamePopup component
+              <p>Hello world</p>
           ),
           async onOk() {
             const whatIfObj = {
@@ -165,14 +161,6 @@ export const updateBranchRowAction = {
       onClick(e, { columnProps, rowIndex }) {
         // 8.2 TODO: get lastbranch, name and currency caption from headers and content of columnProps data
         // ...
-        const lastBranchIndex = columnProps.data.headers.length - 1;
-        if (lastBranchIndex >= 0) {
-          const header = columnProps.data.headers[lastBranchIndex];
-          const branchPositionIndex = header.value
-              .split(",")
-              .findIndex((valueString) => valueString.includes("[Epoch].[Epoch].[Branch]"));
-          const lastBranchName = header.captions[branchPositionIndex];
-          const currency = columnProps.data.content[rowIndex][0].caption;
           // use a random default rate
           let rate = 1.236;
 
@@ -180,9 +168,7 @@ export const updateBranchRowAction = {
           // you should pass an onChange callback to get the rate and update the onOk() method to update the branch
           // you should use the sendRequestToAP with this url http://localhost:9090/pivot/rest/v5/datastore/data/branches/(branchName) and POST method
           // update a whatIfUpdateObj {actions: [{action: 'UPDATE',basestore: "Forex",where: {Currency: currency},updateProcedure: {Rate: rate}}]};
-        } else {
-          alert("could not find last branch");
-        }
+
       },
     };
   },
