@@ -56,8 +56,6 @@ let defaultSettings = {
   showLegacyMaps: true,
   // 5.6.1 TODO: register filterOnClickPlugin key for chart.handlers.click
   // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/settings.html#charthandlersclick
-  "chart.handlers.click": [filterOnClickPlugin.key],
-
 };
 
 const activeUI = createActiveUI({
@@ -75,13 +73,8 @@ const activeUI = createActiveUI({
     return _.merge({}, coreTranslation, projectTranslation, {
       "bookmarks.new.myCustomContainer.title": "My Dashboard",
       "bookmarks.new.myCustomContainer.description": "Custom dashboard exercise",
-      "showPnLDiffBetweenDesks": "show as singleValue",
-      showSingleValue: "Show PnL Diff Between Desks",
       // 6.1.1 TODO: add translation for counterparty page action
-      ctpyPage: "Counterparty breakdown page",
       // 6.1.4 TODO: add translation for Top 3 Counterparties in Pnl.SUM
-      showTop3Ctpy: "Top 3 Counterparties in Pnl.SUM",
-      createWhatIfCaption: "Create a new branch",
 
     });
 
@@ -91,7 +84,6 @@ const activeUI = createActiveUI({
     // TODO: Ex4 - add your custom container to the project
     container: [
         StartCustomContainerPlugin,
-        MyCustomDashboardPlugin
     ],
     action: [
         OpenContentEditorPlugin,
@@ -103,7 +95,6 @@ const activeUI = createActiveUI({
     ],
     "cell-renderer":[countKpi],
     // 7.1.2 TODO: register your custom icon under icon plugin
-    icon: [iconPlugin],
     "row-action": [updateBranchRowAction]
   },
 });
