@@ -2,7 +2,7 @@ import {
   ActionPayload,
   ActionPlugin, ActiveFilter,
   ActiveUI, AugmentedActiveFilter, ChartApi,
-  ChartHandlerActionPayload,
+  ChartHandlerActionPayload, StatementAndDiscovery,
 } from "@activeviam/activeui-sdk";
 import _ from "lodash";
 
@@ -37,11 +37,7 @@ export const filterOnClickPlugin: ActionPlugin = {
         // we are unable to tell which member the data in datum belongs to
         // hence we use the column header to find the index of the member that we are interested in
         // we apply the index to datum to obtain the selected value
-        const currencyIndex = _.findIndex(
-            widgetApi.getData().headers,
-            (header) => header.value === currencyMember
-        );
-        const currency = datum? datum[currencyIndex] : undefined;
+
 
         // we get all the siblings which are pivot table
         const siblings = siblingPivot(widgetApi);
@@ -49,55 +45,26 @@ export const filterOnClickPlugin: ActionPlugin = {
         // we apply the currency value as a filter in each of the sibling table
         _.forEach(siblings, (sibling) => {
           const datasource = sibling.getDataSource()
-          mdxApi.transformDataSource(datasource, (snd) => {
-            console.log("snd ", snd)
+          mdxApi.transformDataSource(datasource, (snd: StatementAndDiscovery) => {
             // as we are modifying the the snd, we should clone it in order to prevent mutation of object
-            let updatedSnd = _.cloneDeep(snd)
-            let position = 0
+            return snd;
 
             // retrieve the list of filters used in the sibling widget
-            const widgetFilters = filterApi.selectFilters(
-                updatedSnd, filterApi.selectors.AllSelector.create()
-            )
+
 
             // find the currency filter in the list of existing filter in the widget
-            let currencyFilter: any = _.find(widgetFilters, (filter) => {
-              return filter.hierarchy === currencyHierarchy
-            })
 
             // if currency filter does not exists, we add new filter
             // else we replace the filter
-            if (currencyFilter) {
-              currencyFilter = {
-                key: "explicit",
-                hierarchy: currencyHierarchy,
-                value: { mode: "include"}
-              };
-            } else {
-              // find the position of the currency filter so that we can replace it in the same position
-              position = filterApi.getPosition(updatedSnd, currencyFilter);
-              // replaceFilter would destroy all filters on the same hierarchy
-              //console.log(mdxApi.base.parsing.toString(updatedSnd.statement));
-              if (position >= 0) {
-                updatedSnd.statement = currencyFilter.remove();
-              }
-            }
+
+
+            // else find the position of the currency filter so that we can replace it in the same position
+            // replaceFilter would destroy all filters on the same hierarchy
+            //console.log(mdxApi.base.parsing.toString(updatedSnd.statement));
+
 
             // we add the currency filter to the mdx
-            if (currencyFilter !== undefined) {
-              updatedSnd = filterApi.addFilter(
-                  updatedSnd,
-                  position,
-                  currencyFilter.key,
-                  currencyFilter.hierarchy,
-                  {
-                    members: [currency.value.toString()],
-                    mode: currencyFilter.value.mode
-                  }
-              );
-            }
 
-            return updatedSnd;
           })
         })
 
