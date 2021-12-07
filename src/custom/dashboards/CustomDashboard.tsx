@@ -120,4 +120,3 @@ const MyCustomDashboardPlugin = {
 };
 
 // 4.1.3 TODO: export the container plugin by default
-export default MyCustomDashboardPlugin;
