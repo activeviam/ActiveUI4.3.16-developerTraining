@@ -160,10 +160,7 @@ export const updateBranchRowAction = {
       },
       isDisabled({ columnProps }) {
         // 8.2 TODO: make this action available only if there is at least one whatif branch (check headers of data)
-        if (columnProps.data.headers.length > 2) {
-          return false;
-        }
-        return true;
+        return true
       },
       onClick(e, { columnProps, rowIndex }) {
         // 8.2 TODO: get lastbranch, name and currency caption from headers and content of columnProps data
@@ -183,39 +180,6 @@ export const updateBranchRowAction = {
           // you should pass an onChange callback to get the rate and update the onOk() method to update the branch
           // you should use the sendRequestToAP with this url http://localhost:9090/pivot/rest/v5/datastore/data/branches/(branchName) and POST method
           // update a whatIfUpdateObj {actions: [{action: 'UPDATE',basestore: "Forex",where: {Currency: currency},updateProcedure: {Rate: rate}}]};
-          Modal.confirm({
-            title: "Define a new forex rate",
-            getContainer: () => document.getElementById("popup"),
-            okText: "Update rate",
-            content: (
-                <UpdateForexRatePopup
-                    rate={rate}
-                    currency={currency}
-                    onChange={(newRate) => {
-                      rate = newRate;
-                    }}
-                />
-            ),
-            async onOk() {
-              const whatIfUpdateObj = {
-                actions: [
-                  {
-                    action: "UPDATE",
-                    basestore: "Forex",
-                    where: { Currency: currency},
-                    updateProcedure: { Rate: rate}
-                  }
-                ],
-              };
-              sendRequestToAP(
-                  `http://localhost:9090/pivot/rest/v4/datastore/data/branches/${lastBranchName}`,
-                  whatIfUpdateObj,
-                  columnProps.api,
-                  200,
-                  "Issue while updating the last branch"
-              )
-            }
-          })
         } else {
           alert("could not find last branch");
         }
