@@ -10,33 +10,6 @@ import Modal from "antd/lib/modal";
 // set debugger in each property step before the function return
 // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-action-plugin
 
-// SOLUTION 5.1
-// export const showSingleValue = {
-//     key: 'show-diff-between-desks-value',
-//     createProperties(parameters: any, activeUI: any) {
-//       return {
-//         isAvailable(actionPayload: ActionPayload) {
-//           debugger;
-//           return true;
-//         },
-//
-//         getCaption( actionPayload : ActionPayload) {
-//           debugger;
-//           return { textPath: "showPnLDiffBetweenDesks" };
-//         },
-//         getIconSrcKey(actionPayload: ActionPayload) {
-//           debugger;
-//           return 'menuItem.icon.dockInLegend';
-//         },
-//         execute(event: React.SyntheticEvent, actionPayload: ActionPayload) {
-//           debugger;
-//           console.log("actionPayload", actionPayload);
-//         }
-//       };
-//     }
-// };
-
-// SOLUTION 5.2
 const cityHierarchy = "[Geography].[City]";
 const currencyHierarchy = "[Currency].[Currency]";
 
@@ -67,33 +40,8 @@ const getCityCurrencyFromPayload = (payload: any, activeUI: ActiveUI) => {
 //         // widget is non-static (widgetApi.getDataSource().usesMdx())
 //         // only when a cell is selected (check target of context object)
 //         // Selected cell contains city and currency values. // refer to showcase > Story telling with dashboard
-//
-//
-//         const { actionSituation, widgetApi, context } = actionPayload as TabularHandlerActionPayload;
-//         const isWidgetTabular = actionSituation === "tabular-handler";
-//         const isWidgetNonStatic = widgetApi.getDataSource().usesMdx();
-//         const isCellSelected = context !== undefined;
-//         let cityAndCurrencyAvailable = isCityAndCurrencyAvailableFromPayload(actionPayload as ActionPayload, activeUI) !== undefined;
-//
-//
-//         return isWidgetTabular && isWidgetNonStatic && isCellSelected && cityAndCurrencyAvailable;
-//       },
-//
-//       getCaption( actionPayload : ActionPayload) {
-//         debugger;
-//         return { textPath: "showPnLDiffBetweenDesks" };
-//       },
-//       getIconSrcKey(actionPayload: ActionPayload) {
-//         return 'menuItem.icon.dockInLegend';
-//       },
-//       execute(event: React.SyntheticEvent, actionPayload: ActionPayload) {
-//         console.log("actionPayload", actionPayload);
-//       }
-//     };
-//   }
-// };
 
-// SOLUTION EX 5.3
+
 const getSingleValueMdx = (cellValue: any) => `
 SELECT
 NON EMPTY Hierarchize(
@@ -158,13 +106,7 @@ export const showSingleValue = {
   createProperties(parameters: any, activeUI: ActiveUI) {
     return {
       isAvailable(actionPayload: ActionPayload) {
-        const { actionSituation, widgetApi, context } = actionPayload as TabularHandlerActionPayload;
-        const isWidgetTabular = actionSituation === "tabular-handler";
-        const isWidgetNonStatic = widgetApi.getDataSource().usesMdx();
-        const isCellSelected = context !== undefined && context.target === "cell" && context.renderableTabularHeader !== undefined;
-        let cityAndCurrencyAvailable = getCityCurrencyFromPayload(actionPayload as ActionPayload, activeUI) !== undefined;
-
-        return isWidgetTabular && isWidgetNonStatic && isCellSelected && cityAndCurrencyAvailable;
+        return false
       },
 
       getCaption( actionPayload : ActionPayload) {
@@ -175,23 +117,12 @@ export const showSingleValue = {
       },
       execute(event: React.SyntheticEvent, actionPayload: ActionPayload) {
         // 5.3.2 TODO: use function created to obtain city and currency values
-        const cellValue = getCityCurrencyFromPayload(actionPayload, activeUI);
 
         // 5.3.2 TODO: adjust getSingleValueMdx to make use of the city and currency values
         // obtained above.
-        const mdx = getSingleValueMdx(cellValue);
 
 
         //TODO:  Ex 5.3 display a modal with Hello World
-        Modal.info({
-            title: "This is a single Value",
-            content: (
-            <ActiveUIProvider activeUI={activeUI}>
-              <SingleValueContent mdx={mdx} />
-            </ActiveUIProvider>
-        ),
-      }
-        )
       }
     };
   }
