@@ -20,21 +20,6 @@ export const countKpi = {
             },
             getCellStyle(rowIdx: number, columnProps:any) {
                 const colorObj = {color:"black"};
-                if (
-                    columnProps.data.content[rowIdx][columnProps.colIdx] !== null &&
-                    columnProps.data.content[rowIdx][columnProps.colIdx] !== undefined
-                ) {
-                    const cellValue =
-                        columnProps.data.content[rowIdx][columnProps.colIdx].value;
-                    if (cellValue < 20) {
-                        colorObj.color = "red";
-                    } else if (cellValue > 20 && cellValue <= 40) {
-                        colorObj.color = "orange";
-                    } else {
-                        colorObj.color = "green";
-                    }
-                }
-
                 return colorObj;
 
             },
