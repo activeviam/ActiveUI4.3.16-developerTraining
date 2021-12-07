@@ -1,7 +1,7 @@
 // 6.1.3 TODO: import the ctpyPage from 6.1.2
 // ...
 
-import {DashboardApi} from "@activeviam/activeui-sdk";
+import {ContainerFullValue, DashboardApi} from "@activeviam/activeui-sdk";
 import {ctpyPage} from "../components/dashboards/CounterpartyPage";
 
 const counterPartyHierarchy = "[CounterParty].[CounterParty]";
@@ -55,7 +55,18 @@ export const ctpyPageAction = {
                 // the parent dashboard is the parent of the container where this widget resides in
                 const widgetParent: any = widgetApi.getParent();
                 const parentDashboard: DashboardApi = widgetParent.getParentDashboard();
-                parentDashboard.addPage(newPage);
+                // parentDashboard.addPage({
+                //     content: {
+                //         key: "",
+                //         bookmark: {
+                //             value: {
+                //                 containerKey:"",
+                //             }
+                //         } as ContainerFullValue,
+                //     },
+                //     layout: {},
+                //     name: ""
+                // });
             }
         };
     }
