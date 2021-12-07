@@ -119,15 +119,11 @@ export const showTop3Value: ActionPlugin = {
                     mdxApi.parsing.parseExpression(
                         mdxApi.transform(mdx, discovery, (snd) => {
                             let updatedSnd = _.cloneDeep(snd);
-                            _.forEach(widgetFilters, (filter) => {
-                                updatedSnd = mdxApi.filters.addFilter(
-                                    updatedSnd,
-                                    filterApi.LAST_POSITION,
-                                    filter.key,
-                                    filter.hierarchy,
-                                    filter.value
-                                );
-                            });
+
+                            //TODO: Add the filter
+                            // _.forEach(widgetFilters, (filter) => {
+                            //
+                            // });
 
                             return updatedSnd;
                         })
@@ -137,11 +133,7 @@ export const showTop3Value: ActionPlugin = {
 
                 Modal.info({
                     title: "Top 3 Counterparties in Pnl.SUM",
-                    content: (
-                        <ActiveUIProvider activeUI={activeUI}>
-                            <Top3ValueContent mdx={newFVMdx} />
-                        </ActiveUIProvider>
-                    ),
+                    content: (<p>hello world</p>),
                     width: 600,
                 });
             },
