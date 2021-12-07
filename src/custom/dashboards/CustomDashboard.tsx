@@ -35,7 +35,7 @@ const MyPivotValue: ContainerFullValue = {
     value: {
         // TODO: Ex6.1.2 - Add key of ctpyPageAction to the pivot's context menu (note contextmenu is an array)
         // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/settings.html#pivot-tablehandlerscontextmenu
-        "pivot-table.handlers.contextmenu": [ctpyPageAction.key],
+        "pivot-table.handlers.contextmenu": [],
         // TODO: Ex6.1.5 - Add key of showTop3Value to the quick Action
         // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/settings.html#pivot-tablequickactions
         // Inherit the default list of actions
@@ -43,7 +43,6 @@ const MyPivotValue: ContainerFullValue = {
         "pivot-table.quickActions": [
             "update-query-mode",
             "full-size",
-            showTop3Value.key,
         ],
         style: {},
         showTitleBar: true,
@@ -117,15 +116,12 @@ function MyDashboardComponent() {
 // Refer to https://activeviam.com/activeui/documentation/4.3.11/dev/reference/sdk-api/activeui-sdk.reactcontainerimplementationstaticproperties.html
 // for icons:  https://activeviam.jfrog.io/activeviam/activeui-generic-release/4.3.16/activeui-sdk-showcase-4.3.16.zip!/index.html#/Icons
 const MyCustomDashboardPlugin = {
-    key: "myCustomContainer",
     staticProperties: {
         category: "custom",
         choosableFromUI: true,
-        iconKey: "menuItem.icon.colors",
-        component: MyDashboardComponent,
         initialValue: {
-            actions: ["remove-dock", "toggle-dock-title-bar", "clear-dock"],
-            containerKey: "myCustomContainer" // container key must match the plugin key
+            actions: [],
+            containerKey: ""  // container key must match the plugin key
         }
     },
 };
