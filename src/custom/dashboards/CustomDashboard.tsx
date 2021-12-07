@@ -102,12 +102,6 @@ function MyDashboardComponent() {
                 flexDirection: "row",
             }}
         >
-            <div style={{ width: "50%", height: "100%" }}>
-                <Container childKey="myPivotTable" defaultValue={MyPivotValue} />
-            </div>
-            <div style={{ width: "50%" }}>
-                <Container childKey="myChart" defaultValue={MyChartValue} />
-            </div>
         </div>
     );
 }
