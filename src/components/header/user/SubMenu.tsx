@@ -42,18 +42,6 @@ export default function SubMenu(props: SubMenuProps) {
       </Menu.Item>
 
         {/*TODO: Ex-2 generate menu items by lopping through themes.listThemes(). Please note that there is a typo in the ThemeDescription interface and that we should circumvent this by defining the themes as any*/}
-        {themes.listThemes().map((config: any) => (
-            <Menu.Item
-                disabled={!config.selectable}
-                title = {config.value}
-                key = {`theme ${config.value}`}
-                onClick={(valueClicked) => {
-                    settings.set(themeSettingKey, valueClicked.key.slice(6))
-                }}
-            >
-               {config.caption}
-            </Menu.Item>
-        ))}
 
     </Menu.SubMenu>
   );
