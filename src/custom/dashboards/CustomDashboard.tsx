@@ -112,7 +112,6 @@ function MyDashboardComponent() {
 const MyCustomDashboardPlugin = {
     staticProperties: {
         category: "custom",
-        choosableFromUI: true,
         initialValue: {
             actions: [],
             containerKey: ""  // container key must match the plugin key
