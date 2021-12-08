@@ -1,3 +1,4 @@
+import {ActiveUI} from "@activeviam/activeui-sdk";
 import React from "react";
 
 // 5.4.1 TODO: create a cell-renderer plugin that returns sets color as follows:
@@ -9,7 +10,7 @@ import React from "react";
 // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-cell-renderer-plugin
 export const countKpi = {
   key: "count-kpi",
-  createProperties(parameters, activeUI) {
+  createProperties(parameters: any, activeUI: ActiveUI) {
     // ...
   },
 };
