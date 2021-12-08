@@ -5,7 +5,7 @@
 // execute: use console.log to print out the object actionPayload
 // set debugger in each property step before the function return
 // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-action-plugin
-import {ActionPayload, ActiveUI} from "@activeviam/activeui-sdk";
+import {ActionPayload, ActiveUI, Container} from "@activeviam/activeui-sdk";
 
 const cityHierarchy = "[Geography].[City]";
 const currencyHierarchy = "[Currency].[Currency]";
@@ -102,3 +102,28 @@ FROM (
   )
 )
 CELL PROPERTIES VALUE, FORMATTED_VALUE, BACK_COLOR, FORE_COLOR, FONT_FLAGS`;
+
+// const  SingleValueContent = (props: any) => {
+//     const { mdx } = props;
+//     return (
+//         <div style={{ width: "100%", height: "120px" }}>
+//             <Container
+//                 childKey="custom-single-value"
+//                 defaultValue={{
+//                     name: "Featured values",
+//                     value: {
+//                         "featured-values.handlers.contextmenu": [],
+//                         "featured-values.actions": [],
+//                         "featured-values.quickActions": [],
+//                         body: {
+//                             mdx,
+//                             updateMode: "realTime",
+//                         },
+//                         containerKey: "featured-values",
+//                         showTitleBar: false,
+//                     },
+//                 }}
+//             />
+//         </div>
+//     );
+// }
