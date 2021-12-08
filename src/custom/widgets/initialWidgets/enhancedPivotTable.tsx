@@ -193,6 +193,7 @@ const enhancedPivotTable = {
     // TODO 5.1.3 :
     // Uncomment below to use predefined bookmark state rather then default settings
     // 'pivot-table.handlers.contextmenu': enhancedPivotTableHandlersContextMenu,
+    // TODO 5.4 register your CountKpi plugin
     body: {configuration: {tabular: {hideAddButton: true}}},
   }),
 };
