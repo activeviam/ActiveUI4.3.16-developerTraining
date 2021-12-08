@@ -81,9 +81,11 @@ const activeUI = createActiveUI({
     "bookmarks.favorites.enhanced-chart": enhancedChart,
     // TODO: 5.1.5: remove the default pivot table, tabulat,  and chart widget using bookmarks.favorites.pivot-table.hidden,
     // bookmarks.favorites.tabular-view.hidden and bookmarks.favorites.chart.hidden
+    // 5.6.1 TODO: register filterOnClickPlugin key for chart.handlers.click
   },
   plugins: {
     // TODO: 5.1.4 Add the SingleValueAction to the list of Actions
+    // 5.6.1 TODO: register filterOnClickPlugin
     container: [StartCustomContainerPlugin, MyCustomDashboardPlugin],
     action: [OpenContentEditorPlugin],
   },

@@ -1,6 +1,10 @@
 import {ActiveUI} from "@activeviam/activeui-sdk";
 import React from "react";
 
+function isNotUndefined(obj: unknown): obj is {} {
+    return obj !== undefined;
+}
+
 // 5.4.1 TODO: create a cell-renderer plugin that returns sets color as follows:
 // cell value < 20 : Red
 // cell value > 40 : Green
