@@ -15,6 +15,17 @@ function isNotUndefined(obj: unknown): obj is {} {
 export const countKpi = {
   key: "count-kpi",
   createProperties(parameters: any, activeUI: ActiveUI) {
-    // ...
-  },
+      return {
+          isAvailable(columnProps: any) {
+              return true;
+          },
+          getCellStyle(rowIdx: number, columnProps: any) {
+              const colorObj = {color:"black"};
+              return colorObj;
+          },
+          renderCell(props: any) {
+              return <activeUI.widgets.tableCells.CaptionCellRenderer {...props} />;
+          }
+      };
+  }
 };
