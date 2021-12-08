@@ -14,7 +14,7 @@ function isNotUndefined(obj: unknown): obj is {} {
 // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-cell-renderer-plugin
 export const countKpi = {
   key: "count-kpi",
-  createProperties(parameters: any, activeUI: ActiveUI) {
+  createProperties(parameters: any, activeUI: any) {
       return {
           isAvailable(columnProps: any) {
               return true;
