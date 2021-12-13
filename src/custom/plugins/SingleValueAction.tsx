@@ -6,6 +6,7 @@
 // set debugger in each property step before the function return
 // refer to https://activeviam.com/activeui/documentation/4.3.16/dev/reference/plugins.html#implement-a-custom-action-plugin
 import {ActionPayload, ActiveUI, Container} from "@activeviam/activeui-sdk";
+import React from "react";
 
 const cityHierarchy = "[Geography].[City]";
 const currencyHierarchy = "[Currency].[Currency]";
@@ -55,13 +56,13 @@ export const showSingleValue = {
             },
 
             getCaption( actionPayload : ActionPayload) {
+                //TODO: 5.1 Change the text to show single value
                 return { textPath: "custom action" };
             },
             getIconSrcKey(actionPayload: ActionPayload) {
                 return 'menuItem.icon.dockInLegend';
             },
             execute(event: React.SyntheticEvent, actionPayload: ActionPayload) {
-
                 //TODO: 5.1 : log the payload in the console
                 //TODO: 5.3 : Display a modal with Hello World
 
