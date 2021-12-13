@@ -8,11 +8,6 @@ import _ from "lodash";
 const currencyMember = "[Currency].[Currency].[Currency]";
 const currencyHierarchy = "[Currency].[Currency]";
 
-const siblingPivot = (widgetApi: WidgetApi) =>
-  _.filter(
-    widgetApi.getNonEmptySiblings(),
-    (sibling) => sibling.getBookmarkContainerKey() === "pivot-table"
-  );
 
 export const filterOnClickPlugin: ActionPlugin = {
   key: "filter-on-click",
@@ -39,26 +34,22 @@ export const filterOnClickPlugin: ActionPlugin = {
         const { actionSituation, widgetApi, datum } = actionPayload;
         // 5.6.2 TODO: return true only when
         // 1. actionSituation is "chart-handler"
+        const isChartHandlerAction = false;
         // 2. currency is available in the chart (you can derive members of the charts from the headers returned from widgetApi.getData())
+        const isCurrencyAvailable = false;
         // 3. a cell is clicked (check datum)
+        const isCellClicked = false;
         // 4. there exists at least 1 sibling widget that is a pivot table (you can use widgetApi to getSibling() or to be more precise,
+        const hasAtLeastOnePivotSibling = false
         // you can use getNonEmptySiblings() to get all the siblings.
         // However you are only interested if the container key of the sibling is "pivot-table")
         // Refer to
         // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.chartapi.html
         // https://activeviam.com/activeui/documentation/4.3.16/dev/reference/sdk-api/activeui-sdk.containerapi.html
-        const currencyIndex = _.findIndex(
-            widgetApi.getData().headers,
-            (header) => header.value === currencyMember
-        );
 
-        const siblings = siblingPivot(widgetApi);
 
         return (
-            actionSituation === "chart-handler"
-            && datum != undefined
-            && currencyIndex > -1
-            && siblings.length > 0
+            isChartHandlerAction && isCurrencyAvailable && isCellClicked && hasAtLeastOnePivotSibling
         )
       },
     };
