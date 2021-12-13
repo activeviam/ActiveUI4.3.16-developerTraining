@@ -29,7 +29,8 @@ const getCityCurrencyFromPayload = (payload: any, activeUI: ActiveUI) => {
 }
 
 
-
+//TODO: 5.3.1 : Return a modal with Hello world
+//TODO: 5.3.3 : Return a modal with a Container containing a featured value using the getSingleValueMdx method
 function SingleValueContent(props: any) {
     const { mdx } = props;
     return (
@@ -64,7 +65,9 @@ export const showSingleValue = {
             },
             execute(event: React.SyntheticEvent, actionPayload: ActionPayload) {
                 //TODO: 5.1 : log the payload in the console
-                //TODO: 5.3 : Display a modal with Hello World
+                //TODO: 5.3.1 : Display a modal with Hello World
+                //TODO: 5.3.2 : Obtain the city and currency information
+                //TODO: 5.3.4 : Return a modal containing the SingleValueContent
 
             }
         };
@@ -103,28 +106,3 @@ FROM (
   )
 )
 CELL PROPERTIES VALUE, FORMATTED_VALUE, BACK_COLOR, FORE_COLOR, FONT_FLAGS`;
-
-// const  SingleValueContent = (props: any) => {
-//     const { mdx } = props;
-//     return (
-//         <div style={{ width: "100%", height: "120px" }}>
-//             <Container
-//                 childKey="custom-single-value"
-//                 defaultValue={{
-//                     name: "Featured values",
-//                     value: {
-//                         "featured-values.handlers.contextmenu": [],
-//                         "featured-values.actions": [],
-//                         "featured-values.quickActions": [],
-//                         body: {
-//                             mdx,
-//                             updateMode: "realTime",
-//                         },
-//                         containerKey: "featured-values",
-//                         showTitleBar: false,
-//                     },
-//                 }}
-//             />
-//         </div>
-//     );
-// }
